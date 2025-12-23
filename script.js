@@ -1,8 +1,44 @@
 /* ===================================
-   QUIT FAP PAL - JavaScript
+   QUIT FAP PAL - Professional JavaScript
    =================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ===================================
+    // LOADING SCREEN
+    // ===================================
+    const loadingScreen = document.getElementById('loadingScreen');
+    
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            if (loadingScreen) loadingScreen.classList.add('hidden');
+            document.body.classList.add('loaded');
+        }, 1800);
+    });
+    
+    // Fallback: hide loading screen after 3 seconds max
+    setTimeout(() => {
+        if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+            loadingScreen.classList.add('hidden');
+            document.body.classList.add('loaded');
+        }
+    }, 3000);
+    
+    // ===================================
+    // SCROLL PROGRESS BAR
+    // ===================================
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        if (scrollProgress) {
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+    }
+    
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
     
     // ===================================
     // NAVBAR
@@ -10,15 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
+    const backToTop = document.getElementById('backToTop');
     
-    // Scroll effect
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+        const currentScroll = window.scrollY;
+        
+        // Add scrolled class for background
+        if (currentScroll > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+        
+        // Back to top button visibility
+        if (backToTop) {
+            if (currentScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+    }, { passive: true });
+    
+    // Back to top click handler
+    if (backToTop) {
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
     // Mobile menu toggle
     if (navToggle) {
@@ -42,16 +97,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
             if (target) {
                 const offsetTop = target.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
             }
         });
     });
+    
+    // ===================================
+    // SCROLL REVEAL ANIMATIONS
+    // ===================================
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
     
     // ===================================
     // FAQ ACCORDION
@@ -60,25 +134,34 @@ document.addEventListener('DOMContentLoaded', function() {
     
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', function() {
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
+        if (question) {
+            question.addEventListener('click', function() {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                item.classList.toggle('active');
             });
-            
-            // Toggle current item
-            item.classList.toggle('active');
-        });
+        }
     });
     
     // ===================================
-    // CONTACT FORM (Using Formspree)
+    // CONTACT FORM WITH TOAST
     // ===================================
     const contactForm = document.getElementById('contactForm');
-    const toast = document.getElementById('toast');
+    
+    // Create toast element
+    let toast = document.querySelector('.toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    
+    function showToast(message, type = 'success') {
+        toast.textContent = message;
+        toast.className = 'toast ' + type + ' show';
+        setTimeout(() => toast.classList.remove('show'), 4000);
+    }
     
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -87,112 +170,66 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
-            // Loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span>Sending...</span>';
             
-            // Get form data
             const formData = new FormData(contactForm);
             
             try {
-                // Send to Web3Forms
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
                 
                 if (response.ok) {
-                    // Show success toast
-                    showToast('Message sent successfully! We\'ll get back to you soon.');
+                    showToast('✓ Message sent successfully!', 'success');
                     contactForm.reset();
                 } else {
-                    throw new Error('Form submission failed');
+                    throw new Error('Failed');
                 }
             } catch (error) {
-                // Fallback: Open mailto
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const subject = formData.get('subject');
-                const message = formData.get('message');
-                
-                const mailtoLink = `mailto:7anon777@gmail.com?subject=${encodeURIComponent(`[QuitFapPal] ${subject}`)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
-                
-                window.location.href = mailtoLink;
-                showToast('Opening your email client...');
+                showToast('⚠ Something went wrong. Please try again.', 'error');
             }
             
-            // Reset button
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
         });
     }
     
-    function showToast(message) {
-        const toastMessage = toast.querySelector('.toast-message');
-        toastMessage.textContent = message;
-        toast.classList.add('show');
+    // ===================================
+    // CURSOR GLOW EFFECT (Desktop only)
+    // ===================================
+    if (window.innerWidth > 1024) {
+        const cursorGlow = document.createElement('div');
+        cursorGlow.className = 'cursor-glow';
+        document.body.appendChild(cursorGlow);
         
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
-    }
-    
-    // ===================================
-    // SCROLL ANIMATIONS
-    // ===================================
-    const animatedElements = document.querySelectorAll('.feature-card, .step, .privacy-card, .faq-item');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorGlow.classList.add('active');
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
-    
-    // ===================================
-    // PARALLAX EFFECT (subtle)
-    // ===================================
-    const heroMascot = document.querySelector('.hero-mascot');
-    
-    if (heroMascot) {
-        window.addEventListener('scroll', function() {
-            const scrolled = window.scrollY;
-            if (scrolled < 800) {
-                heroMascot.style.transform = `translateY(${scrolled * 0.1}px) rotate(-2deg)`;
-            }
+        
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursorGlow.style.left = cursorX + 'px';
+            cursorGlow.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        const interactiveElements = document.querySelectorAll('a, button, .feature-card, .testimonial-card, .privacy-card, .faq-question');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorGlow.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorGlow.classList.remove('hover'));
         });
-    }
-    
-    // ===================================
-    // COUNTER ANIMATION (for stats)
-    // ===================================
-    function animateValue(element, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            element.textContent = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
+        
+        document.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
     }
     
     // ===================================
@@ -205,92 +242,82 @@ document.addEventListener('DOMContentLoaded', function() {
             const y = e.clientY - rect.top;
             
             const ripple = document.createElement('span');
-            ripple.style.cssText = `
-                position: absolute;
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                pointer-events: none;
-                width: 100px;
-                height: 100px;
-                left: ${x - 50}px;
-                top: ${y - 50}px;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-            `;
-            
-            button.style.position = 'relative';
-            button.style.overflow = 'hidden';
+            ripple.style.cssText = 'position:absolute;background:rgba(255,255,255,0.4);border-radius:50%;pointer-events:none;width:100px;height:100px;left:' + (x-50) + 'px;top:' + (y-50) + 'px;transform:scale(0);animation:ripple 0.6s ease-out;';
             button.appendChild(ripple);
-            
             setTimeout(() => ripple.remove(), 600);
         });
     });
     
-    // Add ripple animation to document
+    // Add ripple keyframes
     const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-    `;
+    style.textContent = '@keyframes ripple{to{transform:scale(4);opacity:0}}';
     document.head.appendChild(style);
     
     // ===================================
-    // TYPING EFFECT FOR HERO (optional)
+    // PARALLAX EFFECTS
     // ===================================
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        // Add subtle glow animation to gradient text
-        const gradientText = heroTitle.querySelector('.gradient-text');
-        if (gradientText) {
-            setInterval(() => {
-                gradientText.style.filter = 'brightness(1.1)';
-                setTimeout(() => {
-                    gradientText.style.filter = 'brightness(1)';
-                }, 500);
-            }, 3000);
+    const heroMascot = document.querySelector('.hero-mascot-floating');
+    const heroPhone = document.querySelector('.hero-phone-video');
+    
+    window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY;
+        if (scrolled < 800) {
+            if (heroMascot) heroMascot.style.transform = 'translateY(' + (scrolled * 0.15) + 'px) rotate(' + (-2 + scrolled * 0.01) + 'deg)';
+            if (heroPhone) heroPhone.style.transform = 'translateY(' + (scrolled * 0.08) + 'px)';
         }
-    }
+    }, { passive: true });
     
     // ===================================
-    // PRELOADER (optional)
-    // ===================================
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-    });
-    
-    // ===================================
-    // ESCAPE KEY TO CLOSE MOBILE MENU
+    // ESCAPE KEY & CLICK OUTSIDE
     // ===================================
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+            faqItems.forEach(item => item.classList.remove('active'));
+        }
+    });
+    
+    document.addEventListener('click', function(e) {
+        if (navLinks && navToggle) {
+            if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
         }
     });
     
     // ===================================
-    // CLICK OUTSIDE TO CLOSE MOBILE MENU
+    // VIDEO AUTOPLAY FIX
     // ===================================
-    document.addEventListener('click', function(e) {
-        if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
+    document.querySelectorAll('video[autoplay]').forEach(video => {
+        video.play().catch(() => {
+            const playOnScroll = () => {
+                video.play();
+                window.removeEventListener('scroll', playOnScroll);
+            };
+            window.addEventListener('scroll', playOnScroll, { once: true, passive: true });
+        });
     });
+    
+    // ===================================
+    // TESTIMONIALS AUTO-HIGHLIGHT
+    // ===================================
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let currentTestimonial = 0;
+    
+    if (testimonialCards.length > 0) {
+        setInterval(() => {
+            testimonialCards.forEach(card => card.style.transform = 'translateY(0)');
+            testimonialCards[currentTestimonial].style.transform = 'translateY(-5px)';
+            currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        }, 4000);
+    }
+    
+    // ===================================
+    // CONSOLE EASTER EGG
+    // ===================================
+    console.log('%c🔥 Quit Fap Pal', 'font-size:24px;font-weight:bold;color:#9333EA');
+    console.log('%cBuilding strength, one day at a time.', 'font-size:14px;color:#666');
     
 });
-
-// ===================================
-// FORMSPREE ALTERNATIVE: Web3Forms (Free)
-// ===================================
-// If Formspree doesn't work, you can use Web3Forms
-// 1. Go to https://web3forms.com
-// 2. Enter your email: 7anon777@gmail.com
-// 3. Get your access key
-// 4. Replace the form action with:
-//    https://api.web3forms.com/submit
-// 5. Add hidden input: <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">

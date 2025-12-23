@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#8B5CF6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="author" content="Quit Fap Pal">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Quit Fap Pal - Your Recovery Companion">
@@ -23,6 +24,32 @@
     <meta name="twitter:title" content="Quit Fap Pal - Your Recovery Companion">
     <meta name="twitter:description" content="Break free from addiction with your friendly recovery companion.">
     <meta name="twitter:image" content="https://quitfappal.com/assets/og-image.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Quit Fap Pal",
+        "description": "Break free from addiction with your friendly recovery companion. Track streaks, build shields, and reclaim your life with science-backed tools.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "150"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Quit Fap Pal"
+        }
+    }
+    </script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
@@ -40,6 +67,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <img src="assets/mascot-face.png" alt="Loading" class="loading-mascot">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -54,7 +101,7 @@
                 <a href="#contact">Contact</a>
             </div>
             <a href="#download" class="nav-cta">Download Now</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <button class="nav-toggle" aria-label="Toggle navigation menu" id="navToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -132,7 +179,7 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-tag">Why Choose Us</span>
                 <h2 class="section-title">Everything You Need to <span class="gradient-text">Succeed</span></h2>
                 <p class="section-subtitle">Built on science, designed with care. Every feature helps you take one step closer to freedom.</p>
@@ -154,37 +201,37 @@
                     </div>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small shield">🛡️</div>
                     <h3>Shield System</h3>
                     <p>Earn shields by staying consistent. Use them to protect your streak on difficult days. A safety net when you need it most.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small brain">🧠</div>
                     <h3>AI Recovery Coach</h3>
                     <p>24/7 support from an AI trained in addiction recovery. Get personalized advice, coping strategies, and encouragement.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small timer">⏱️</div>
                     <h3>Urge Timer</h3>
                     <p>Urges typically pass in 15-20 minutes. Our timer helps you ride the wave with breathing exercises and motivation.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small book">📚</div>
                     <h3>Learn Library</h3>
                     <p>Curated videos from experts like Huberman Lab, explaining the science of recovery and practical strategies.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small journal">📝</div>
                     <h3>Private Journal</h3>
                     <p>Document your journey, track triggers, and reflect on your growth. Completely private, stored only on your device.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon-small medal">🏆</div>
                     <h3>Milestones & Badges</h3>
                     <p>Unlock achievements as you progress. From your first day clean to legendary status. Every win deserves recognition.</p>
@@ -196,58 +243,52 @@
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-tag">Simple Process</span>
                 <h2 class="section-title">Your Journey to <span class="gradient-text">Freedom</span></h2>
                 <p class="section-subtitle">Three simple steps to start your recovery journey</p>
             </div>
             
-            <div class="steps-with-phones">
-                <!-- Step 1: Track Progress with Video -->
-                <div class="step-row">
-                    <div class="step-phone-with-mascot">
-                        <div class="step-phone-video">
-                            <div class="step-phone-notch"></div>
-                            <video class="step-video" autoplay muted loop playsinline>
-                                <source src="assets/progress-demo.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <img src="assets/mascot-streak.png" loading="lazy" alt="Streak Mascot" class="step-mascot-peek step-mascot-bottom-right">
+            <div class="steps-container">
+                <!-- Step 1: Track Progress - Home Screenshot -->
+                <div class="step-row reveal">
+                    <div class="step-visual">
+                        <img src="assets/mockup-screenshot-home.png" loading="lazy" alt="Track Your Streak" class="step-phone-img">
+                        <img src="assets/mascot-streak.png" loading="lazy" alt="Streak Mascot" class="step-mascot">
                     </div>
-                    <div class="step-info">
-                        <div class="step-number-circle">1</div>
+                    <div class="step-content">
+                        <div class="step-number">1</div>
                         <h3>Track Your Progress</h3>
                         <p>Start your streak and watch it grow. Check in daily to log your mood, triggers, and wins. Your Pal celebrates every milestone with you.</p>
                     </div>
                 </div>
                 
                 <!-- Step 2: Use Tools -->
-                <div class="step-row step-row-reverse">
-                    <div class="step-phone-with-mascot">
-                        <div class="step-phone-frame">
-                            <div class="step-phone-notch"></div>
-                            <img src="assets/screenshot-timer.png" loading="lazy" alt="Timer Screen" class="step-screen-img">
-                        </div>
-                        <img src="assets/mascot-tools.png" loading="lazy" alt="Tools Mascot" class="step-mascot-peek step-mascot-left">
+                <div class="step-row step-row-reverse reveal">
+                    <div class="step-visual">
+                        <img src="assets/mascot-tools.png" loading="lazy" alt="Tools Mascot" class="step-mascot">
+                        <img src="assets/mockup-screenshot-timer.png" loading="lazy" alt="Timer Screen" class="step-phone-img">
                     </div>
-                    <div class="step-info">
-                        <div class="step-number-circle">2</div>
+                    <div class="step-content">
+                        <div class="step-number">2</div>
                         <h3>Use Tools When Struggling</h3>
                         <p>Feeling an urge? Open the app. Breathing exercises, urge timer, AI coach - everything designed to help you through difficult moments.</p>
                     </div>
                 </div>
                 
-                <!-- Step 3: Transform -->
-                <div class="step-row">
-                    <div class="step-phone-with-mascot">
-                        <div class="step-phone-frame">
-                            <div class="step-phone-notch"></div>
-                            <img src="assets/screenshot-progress.png" loading="lazy" alt="Progress Screen" class="step-screen-img">
+                <!-- Step 3: Transform - Progress Video -->
+                <div class="step-row reveal">
+                    <div class="step-visual">
+                        <div class="phone-mockup-frame">
+                            <div class="phone-dynamic-island"></div>
+                            <video autoplay muted loop playsinline>
+                                <source src="assets/progress-demo.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <img src="assets/mascot-progress.png" loading="lazy" alt="Progress Mascot" class="step-mascot-peek step-mascot-bottom-right">
+                        <img src="assets/mascot-progress.png" loading="lazy" alt="Progress Mascot" class="step-mascot">
                     </div>
-                    <div class="step-info">
-                        <div class="step-number-circle">3</div>
+                    <div class="step-content">
+                        <div class="step-number">3</div>
                         <h3>Watch Yourself Transform</h3>
                         <p>Review your progress with beautiful charts and insights. Understand your patterns, celebrate your growth, and keep building your new life.</p>
                     </div>
@@ -259,7 +300,7 @@
     <!-- Mascot Story Section -->
     <section class="story-section">
         <div class="container">
-            <div class="story-card">
+            <div class="story-card reveal">
                 <div class="story-mascot">
                     <img src="assets/mascot-worried.png" loading="lazy" alt="Pal understands">
                 </div>
@@ -287,18 +328,18 @@
     <!-- Privacy Section -->
     <section class="privacy-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-tag">Your Privacy Matters</span>
                 <h2 class="section-title">We Take Privacy <span class="gradient-text">Seriously</span></h2>
             </div>
             
             <div class="privacy-grid">
-                <div class="privacy-card">
+                <div class="privacy-card reveal">
                     <div class="privacy-icon">🔒</div>
                     <h3>Secure Sign-In</h3>
                     <p>Sign in securely with your Google or Apple account. We only use this for authentication - no access to your personal data.</p>
                 </div>
-                <div class="privacy-card">
+                <div class="privacy-card reveal">
                     <div class="privacy-icon">📱</div>
                     <h3>Data Stays On Device</h3>
                     <p>Your journal, streaks, and progress are stored locally. Your recovery journey stays private.</p>
@@ -310,7 +351,7 @@
                     <h3>Discreet App Icon</h3>
                     <p>Enable stealth mode for a neutral app icon. Nobody will know what the app is for.</p>
                 </div>
-                <div class="privacy-card">
+                <div class="privacy-card reveal">
                     <div class="privacy-icon">🔐</div>
                     <h3>PIN & Face ID Lock</h3>
                     <p>Add an extra layer of security. Your recovery journey is for your eyes only.</p>
@@ -319,17 +360,66 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Success Stories</span>
+                <h2 class="section-title">People Like You <span class="gradient-text">Winning</span></h2>
+                <p class="section-subtitle">Real stories from our recovery community</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"After years of struggling, this app finally helped me understand my triggers. The urge timer is a game-changer. 90 days clean and counting!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <span class="author-name">Marcus T.</span>
+                            <span class="author-streak">🔥 90 Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The breathing exercises saved me so many times. When an urge hits, I open the app and within minutes I'm calm again. Best investment in myself."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <span class="author-name">James K.</span>
+                            <span class="author-streak">🔥 45 Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I love how private it is. No one knows what this app is for just by looking at my phone. The daily check-ins keep me accountable without feeling judged."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <span class="author-name">Alex R.</span>
+                            <span class="author-streak">🔥 120 Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-tag">Got Questions?</span>
                 <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
             </div>
             
             <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>How does the Shield system work?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -340,8 +430,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>Will anyone know I'm using this app?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -352,8 +442,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>Does this actually work?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -364,8 +454,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>What makes this different from other apps?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -376,8 +466,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>What if I relapse?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -388,8 +478,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>Is my data secure?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -400,8 +490,8 @@
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false"
                         <span>Is this app available on Android?</span>
                         <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
@@ -441,7 +531,7 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-tag">Get In Touch</span>
                 <h2 class="section-title">We'd Love to <span class="gradient-text">Hear From You</span></h2>
                 <p class="section-subtitle">Questions, feedback, or just want to say hi? Drop us a message!</p>
@@ -555,6 +645,34 @@
         <div class="toast-icon">✓</div>
         <div class="toast-message">Message sent successfully!</div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Quit Fap Pal",
+        "description": "Break free from addiction with your friendly recovery companion. Track streaks, build shields, and reclaim your life with science-backed tools.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Quit Fap Pal"
+        }
+    }
+    </script>
 
     <script src="script.js" defer></script>
 </body>
