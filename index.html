@@ -104,8 +104,11 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-phone-wrapper">
-                    <img src="assets/mockup-screenshot-home.png" alt="Quit Fap Pal App" class="hero-phone">
+                <div class="hero-phone-video">
+                    <div class="hero-phone-notch"></div>
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="assets/app-demo.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <img src="assets/mascot-superhero.png" alt="Pal the Recovery Buddy" class="hero-mascot-floating">
             </div>
@@ -215,8 +218,9 @@
                 </div>
                 
                 <div class="step-row">
-                    <div class="step-phone">
-                        <img src="assets/mockup-screenshot-progress.png" alt="See Your Growth">
+                    <div class="step-visual-combo">
+                        <img src="assets/mockup-screenshot-progress.png" alt="See Your Growth" class="step-phone-small">
+                        <img src="assets/mascot-progress.png" alt="Progress Mascot" class="step-mascot-large">
                     </div>
                     <div class="step-info">
                         <div class="step-number-circle">3</div>
@@ -419,54 +423,65 @@
                 <p class="section-subtitle">Questions, feedback, or just want to say hi? Drop us a message!</p>
             </div>
             
-            <div class="contact-container">
-                <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="ed3b9d16-6e92-4384-b449-377bf10ad0ac">
-                    <input type="hidden" name="subject" value="New Contact from QuitFapPal.com">
-                    <input type="hidden" name="from_name" value="QuitFapPal Website">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select a topic...</option>
-                            <option value="feedback">App Feedback</option>
-                            <option value="bug">Report a Bug</option>
-                            <option value="feature">Feature Request</option>
-                            <option value="support">Support Question</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..." rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-large btn-full">
-                        <span>Send Message</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
-                        </svg>
-                    </button>
-                </form>
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <img src="assets/mascot-face.png" alt="Pal" class="contact-mascot">
+            <div class="contact-layout">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="ed3b9d16-6e92-4384-b449-377bf10ad0ac">
+                        <input type="hidden" name="subject" value="New Contact from QuitFapPal.com">
+                        <input type="hidden" name="from_name" value="QuitFapPal Website">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic...</option>
+                                <option value="feedback">App Feedback</option>
+                                <option value="bug">Report a Bug</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="support">Support Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell us what's on your mind..." rows="6"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-side">
+                    <div class="contact-card-large">
+                        <img src="assets/mascot-face.png" alt="Pal" class="contact-mascot-large">
                         <h3>Let's Chat!</h3>
                         <p>We read every message and try to respond within 24 hours. Your feedback helps make the app better for everyone!</p>
                     </div>
-                    <div class="social-links">
-                        <span>Follow Us</span>
-                        <div class="social-icons">
-                            <a href="https://tiktok.com/@eppicpal" target="_blank" rel="noopener" class="social-link tiktok">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    
+                    <div class="social-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons-large">
+                            <a href="https://tiktok.com/@eppicpal" target="_blank" rel="noopener" class="social-link-large">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
                                 </svg>
+                                <span>@eppicpal</span>
                             </a>
                         </div>
                     </div>
