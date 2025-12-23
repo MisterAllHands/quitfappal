@@ -2092,6 +2092,7 @@ textarea:focus-visible {
     line-height: 1.1;
     margin-bottom: 16px;
     text-transform: lowercase;
+    color: #fff;
 }
 
 .pro-main-subtitle {
@@ -2134,6 +2135,7 @@ textarea:focus-visible {
     text-align: center;
     margin-bottom: 8px;
     text-transform: lowercase;
+    color: #fff;
 }
 
 .timeline-subheading {
@@ -2234,6 +2236,7 @@ textarea:focus-visible {
     line-height: 1.15;
     margin-bottom: 12px;
     text-transform: lowercase;
+    color: #fff;
 }
 
 .no-commitment-sub {
