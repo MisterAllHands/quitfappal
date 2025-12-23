@@ -1,0 +1,6 @@
+# Robots.txt for quitfappal.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://quitfappal.com/sitemap.xml

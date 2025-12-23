@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Quit Fap Pal</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .mascot {
+            width: 200px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: white;
+            color: #8B5CF6;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/mascot-worried.png" alt="Worried Pal" class="mascot">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>Looks like this page took a wrong turn on the recovery journey. Let's get you back on track!</p>
+        <a href="/" class="btn">Go Home</a>
+    </div>
+</body>
+</html>
