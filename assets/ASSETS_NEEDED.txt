@@ -1,0 +1,24 @@
+# Assets Required
+
+Please add these files to this folder:
+
+## Required:
+1. favicon.png (32x32) - Browser tab icon
+2. apple-touch-icon.png (180x180) - iOS home screen icon  
+3. app-screenshot.png (390x844) - Main hero screenshot
+4. screenshot-home.png (390x844) - Home tab screenshot
+5. screenshot-tools.png (390x844) - Tools screen screenshot
+6. screenshot-progress.png (390x844) - Progress screen screenshot
+7. og-image.png (1200x630) - Social media preview
+
+## Already included:
+✅ mascot-face.png
+✅ mascot-superhero.png
+✅ mascot-fire.png
+✅ mascot-worried.png
+
+## How to create screenshots:
+1. Open Xcode
+2. Run app in iPhone 14 Pro simulator
+3. Press Cmd+S to save screenshot
+4. Rename files as listed above
