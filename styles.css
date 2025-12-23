@@ -1100,6 +1100,24 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9375rem;
 }
 
+.feature-item .feature-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.feature-included .feature-icon {
+    color: #10B981;
+}
+
+.feature-excluded .feature-icon {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.feature-excluded span {
+    opacity: 0.5;
+}
+
 .feature-icon-check,
 .feature-icon-x {
     width: 20px;
