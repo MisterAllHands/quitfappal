@@ -1,5 +1,5 @@
 /* ===================================
-   QUIT FAP PAL - Professional JavaScript
+   QUIT FAP PAL - Complete JavaScript
    =================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
             navToggle.classList.toggle('active');
+            
+            // Update aria-expanded
+            const isExpanded = navToggle.classList.contains('active');
+            navToggle.setAttribute('aria-expanded', isExpanded);
         });
     }
     
@@ -88,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             navLinks.classList.remove('active');
             navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
         });
     });
     
@@ -136,10 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const question = item.querySelector('.faq-question');
         if (question) {
             question.addEventListener('click', function() {
+                // Close all other items
                 faqItems.forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('open');
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        const otherBtn = otherItem.querySelector('.faq-question');
+                        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                    }
                 });
-                item.classList.toggle('open');
+                
+                // Toggle current item
+                item.classList.toggle('active');
+                const isExpanded = item.classList.contains('active');
+                question.setAttribute('aria-expanded', isExpanded);
             });
         }
     });
@@ -223,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         animateCursor();
         
-        const interactiveElements = document.querySelectorAll('a, button, .feature-card, .testimonial-card, .privacy-card, .faq-question');
+        const interactiveElements = document.querySelectorAll('a, button, .feature-card, .testimonial-card, .privacy-card, .faq-question, .plan-card');
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursorGlow.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorGlow.classList.remove('hover'));
@@ -242,7 +256,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const y = e.clientY - rect.top;
             
             const ripple = document.createElement('span');
-            ripple.style.cssText = 'position:absolute;background:rgba(255,255,255,0.4);border-radius:50%;pointer-events:none;width:100px;height:100px;left:' + (x-50) + 'px;top:' + (y-50) + 'px;transform:scale(0);animation:ripple 0.6s ease-out;';
+            ripple.style.cssText = `
+                position: absolute;
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 50%;
+                pointer-events: none;
+                width: 100px;
+                height: 100px;
+                left: ${x - 50}px;
+                top: ${y - 50}px;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+            `;
             button.appendChild(ripple);
             setTimeout(() => ripple.remove(), 600);
         });
@@ -257,32 +282,85 @@ document.addEventListener('DOMContentLoaded', function() {
     // PARALLAX EFFECTS
     // ===================================
     const heroMascot = document.querySelector('.hero-mascot-floating');
-    const heroPhone = document.querySelector('.hero-phone-video');
+    const heroPhone = document.querySelector('.phone-mockup');
     
     window.addEventListener('scroll', function() {
         const scrolled = window.scrollY;
         if (scrolled < 800) {
-            if (heroMascot) heroMascot.style.transform = 'translateY(' + (scrolled * 0.15) + 'px) rotate(' + (-2 + scrolled * 0.01) + 'deg)';
-            if (heroPhone) heroPhone.style.transform = 'translateY(' + (scrolled * 0.08) + 'px)';
+            if (heroMascot) {
+                heroMascot.style.transform = `translateY(${scrolled * 0.15}px) rotate(${-2 + scrolled * 0.01}deg)`;
+            }
+            if (heroPhone) {
+                heroPhone.style.transform = `translateY(${scrolled * 0.05}px)`;
+            }
         }
     }, { passive: true });
     
     // ===================================
-    // ESCAPE KEY & CLICK OUTSIDE
+    // NUMBER COUNTER ANIMATION
+    // ===================================
+    function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const increment = target / (duration / 16);
+        
+        const updateCounter = () => {
+            start += increment;
+            if (start < target) {
+                element.textContent = Math.floor(start).toLocaleString();
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target.toLocaleString();
+            }
+        };
+        
+        updateCounter();
+    }
+    
+    // Animate counters when they come into view
+    const counters = document.querySelectorAll('[data-counter]');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.getAttribute('data-counter'));
+                animateCounter(entry.target, target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
+    
+    // ===================================
+    // ESCAPE KEY HANDLERS
     // ===================================
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
+            // Close mobile menu
             if (navLinks) navLinks.classList.remove('active');
-            if (navToggle) navToggle.classList.remove('active');
-            faqItems.forEach(item => item.classList.remove('open'));
+            if (navToggle) {
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+            
+            // Close any open FAQ items
+            faqItems.forEach(item => {
+                item.classList.remove('active');
+                const btn = item.querySelector('.faq-question');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            });
         }
     });
     
+    // ===================================
+    // CLICK OUTSIDE TO CLOSE
+    // ===================================
     document.addEventListener('click', function(e) {
+        // Close mobile menu
         if (navLinks && navToggle) {
             if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
                 navLinks.classList.remove('active');
                 navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
             }
         }
     });
@@ -301,6 +379,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ===================================
+    // LAZY LOAD IMAGES
+    // ===================================
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        
+        if (img.complete) {
+            img.style.opacity = '1';
+        } else {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        }
+    });
+    
+    // ===================================
     // TESTIMONIALS AUTO-HIGHLIGHT
     // ===================================
     const testimonialCards = document.querySelectorAll('.testimonial-card');
@@ -308,16 +402,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (testimonialCards.length > 0) {
         setInterval(() => {
-            testimonialCards.forEach(card => card.style.transform = 'translateY(0)');
-            testimonialCards[currentTestimonial].style.transform = 'translateY(-5px)';
+            testimonialCards.forEach(card => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '';
+            });
+            testimonialCards[currentTestimonial].style.transform = 'translateY(-8px)';
+            testimonialCards[currentTestimonial].style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.12)';
             currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
         }, 4000);
     }
+    
+    // ===================================
+    // PLAN CARDS HOVER EFFECT
+    // ===================================
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            planCards.forEach(c => c.style.transform = '');
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
     
     // ===================================
     // CONSOLE EASTER EGG
     // ===================================
     console.log('%c🔥 Quit Fap Pal', 'font-size:24px;font-weight:bold;color:#9333EA');
     console.log('%cBuilding strength, one day at a time.', 'font-size:14px;color:#666');
+    console.log('%cInterested in the code? Check out: github.com/MisterAllHands/quitfappal', 'font-size:12px;color:#999');
     
 });
