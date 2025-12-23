@@ -997,7 +997,7 @@ ul, ol {
     transition: var(--transition-base);
 }
 
-.faq-item.active .faq-icon {
+.faq-item.open .faq-icon {
     transform: rotate(180deg);
 }
 
@@ -1007,7 +1007,7 @@ ul, ol {
     transition: max-height 0.3s ease;
 }
 
-.faq-item.active .faq-answer {
+.faq-item.open .faq-answer {
     max-height: 500px;
 }
 

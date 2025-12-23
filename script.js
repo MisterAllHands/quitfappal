@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (question) {
             question.addEventListener('click', function() {
                 faqItems.forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('active');
+                    if (otherItem !== item) otherItem.classList.remove('open');
                 });
-                item.classList.toggle('active');
+                item.classList.toggle('open');
             });
         }
     });
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape') {
             if (navLinks) navLinks.classList.remove('active');
             if (navToggle) navToggle.classList.remove('active');
-            faqItems.forEach(item => item.classList.remove('active'));
+            faqItems.forEach(item => item.classList.remove('open'));
         }
     });
     
