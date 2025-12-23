@@ -1704,9 +1704,8 @@ ul, ol {
 }
 
 .loading-mascot {
-    width: 100px;
-    height: 100px;
-    animation: loading-bounce 1s ease-in-out infinite;
+    width: 150px;
+    height: 150px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
 

@@ -65,12 +65,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <img src="assets/mascot-face.png" alt="Loading" class="loading-mascot">
+            <lottie-player src="assets/loading-animation.json" background="transparent" speed="1" class="loading-mascot" loop autoplay></lottie-player>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
             </div>
