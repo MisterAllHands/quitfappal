@@ -142,21 +142,40 @@
                     we handle information when you use the Quit Fap Pal mobile application.
                 </p>
                 <p>
-                    <strong>The short version:</strong> We collect minimal data needed for authentication. 
-                    Your recovery journey is private, and we intend to keep it that way.
+                    <strong>The short version:</strong> Your recovery journey data stays on your device. 
+                    We collect minimal data for authentication and subscriptions, and send contextual 
+                    information to our AI provider only when you use the AI Coach feature.
                 </p>
 
-                <h2>Authentication</h2>
+                <h2>Information We Collect</h2>
+                
+                <h3 style="font-size: 1.2rem; margin-top: 24px; color: var(--gray-700);">Authentication Data</h3>
                 <p>
                     Quit Fap Pal uses Google Sign-In and Apple Sign-In for authentication. When you sign in, we receive:
                 </p>
                 <ul>
-                    <li>A unique user identifier (not your actual email unless you choose to share it)</li>
+                    <li>A unique user identifier</li>
+                    <li>Your email address (if provided by your authentication provider)</li>
                     <li>Your display name (if provided)</li>
+                    <li>Your profile photo URL (if available)</li>
                 </ul>
                 <p>
-                    We use this information solely to identify your account and sync your data. We do not share 
-                    this information with third parties or use it for marketing purposes.
+                    We use this information solely to identify your account and enable data sync. We do not share 
+                    this information with third parties for marketing purposes.
+                </p>
+
+                <h3 style="font-size: 1.2rem; margin-top: 24px; color: var(--gray-700);">Subscription Data</h3>
+                <p>
+                    We use RevenueCat to manage subscriptions and in-app purchases. When you subscribe, RevenueCat collects:
+                </p>
+                <ul>
+                    <li>Purchase history and transaction records</li>
+                    <li>Subscription status and renewal information</li>
+                    <li>An anonymous identifier linked to your account</li>
+                </ul>
+                <p>
+                    This data is necessary to provide you with premium features and manage your subscription. 
+                    For more information, see <a href="https://www.revenuecat.com/privacy" style="color: var(--primary);">RevenueCat's Privacy Policy</a>.
                 </p>
 
                 <h2>Information We DON'T Collect</h2>
@@ -165,35 +184,52 @@
                     <li>Your location or GPS data</li>
                     <li>Your contacts or phone data</li>
                     <li>Your browsing history</li>
-                    <li>Any health or recovery information beyond what you enter in the app</li>
+                    <li>Device advertising identifiers (IDFA)</li>
+                    <li>Any health data from HealthKit</li>
                 </ul>
 
                 <h2>Your Recovery Data</h2>
                 <p>
-                    Your recovery data in Quit Fap Pal includes:
+                    Your recovery data is stored locally on your device and includes:
                 </p>
                 <ul>
                     <li>Your streak count and history</li>
-                    <li>Daily check-in records</li>
+                    <li>Daily check-in records (mood, notes, coping strategies)</li>
                     <li>Journal entries</li>
                     <li>Urge logs and coping tool usage</li>
                     <li>Milestone achievements</li>
+                    <li>Onboarding responses (motivations, triggers, personal vision)</li>
+                    <li>AI-generated insights and weekly summaries</li>
+                    <li>Conversation history with the AI Coach</li>
                     <li>App preferences and settings</li>
                 </ul>
                 <p>
-                    This data is stored securely and associated with your account. 
+                    This data is stored securely on your device and associated with your account. 
                     You can delete all your data at any time from the app settings.
                 </p>
 
                 <h2>AI Coach Feature</h2>
                 <p>
-                    When you use the AI Coach feature, your messages are sent to our AI service provider (Google Gemini) 
-                    to generate responses. Important notes about this:
+                    When you use the AI Coach feature, information is sent to our AI service provider (Google Gemini) 
+                    to generate personalized responses. This includes:
                 </p>
                 <ul>
-                    <li>Messages are processed in real-time and are not stored by us</li>
-                    <li>We do not link your messages to any personal identity</li>
-                    <li>The AI provider may process messages according to their privacy policy</li>
+                    <li>Your messages to the coach</li>
+                    <li>Your current recovery statistics (streak length, clean days, goal progress)</li>
+                    <li>Today's activity summary (check-ins completed, urges logged, tools used)</li>
+                    <li>Your motivations and personal vision (from onboarding)</li>
+                    <li>Self-reported triggers and high-risk times</li>
+                    <li>Detected behavioral patterns from your journey data</li>
+                    <li>Insights extracted from your journal entries</li>
+                    <li>Current time of day and whether you're in a high-risk period</li>
+                </ul>
+                <p>
+                    <strong>Important notes about AI data:</strong>
+                </p>
+                <ul>
+                    <li>No personally identifiable information (name, email) is sent to the AI</li>
+                    <li>This context helps the AI provide relevant, personalized support</li>
+                    <li>Messages are processed according to <a href="https://policies.google.com/privacy" style="color: var(--primary);">Google's Privacy Policy</a></li>
                     <li>You can use the app fully without using the AI Coach feature</li>
                 </ul>
 
@@ -212,14 +248,21 @@
 
                 <h2>Third-Party Services</h2>
                 <p>
-                    Our app may contain links to external content (like educational videos on YouTube). 
-                    When you access these external services, their own privacy policies apply. 
-                    We encourage you to review the privacy policies of any third-party services you interact with.
+                    Our app uses the following third-party services:
+                </p>
+                <ul>
+                    <li><strong>Firebase Authentication:</strong> For secure sign-in (<a href="https://firebase.google.com/support/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+                    <li><strong>Google Gemini:</strong> For AI Coach responses (<a href="https://policies.google.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+                    <li><strong>RevenueCat:</strong> For subscription management (<a href="https://www.revenuecat.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+                </ul>
+                <p>
+                    The app may also contain links to external content (like educational videos on YouTube). 
+                    When you access these external services, their own privacy policies apply.
                 </p>
 
                 <h2>Data Security</h2>
                 <p>
-                    Since your data is stored locally on your device, its security depends on your device's security features. 
+                    Your recovery data is stored locally on your device. Its security depends on your device's security features. 
                     We recommend:
                 </p>
                 <ul>
@@ -242,7 +285,8 @@
                 </p>
                 <ul>
                     <li><strong>Export:</strong> You can export your data from the app's Settings menu</li>
-                    <li><strong>Deletion:</strong> You can delete all your data from Settings, or simply delete the app</li>
+                    <li><strong>Deletion:</strong> You can delete all your data from Settings → Delete Account</li>
+                    <li><strong>Account Deletion:</strong> Deleting your account removes all associated data</li>
                 </ul>
 
                 <h2>Changes to This Policy</h2>
@@ -256,6 +300,7 @@
                     If you have any questions about this Privacy Policy, please contact us:
                 </p>
                 <ul>
+                    <li>Email: <a href="mailto:support@quitfappal.com" style="color: var(--primary);">support@quitfappal.com</a></li>
                     <li>Through the app's Contact feature</li>
                     <li>Via our website at <a href="https://quitfappal.com/#contact" style="color: var(--primary);">quitfappal.com</a></li>
                 </ul>
@@ -265,13 +310,14 @@
                     Depending on your location, you may have certain rights regarding your personal data, including:
                 </p>
                 <ul>
-                    <li>The right to access your data (it's all on your device!)</li>
+                    <li>The right to access your data (available in Settings)</li>
                     <li>The right to delete your data (available in Settings)</li>
                     <li>The right to data portability (export feature available)</li>
+                    <li>The right to opt out of data collection (don't use AI Coach)</li>
                 </ul>
                 <p>
-                    Since we don't collect personal data, most data protection regulations don't apply to our service. 
-                    However, we believe in these principles and have built our app to give you full control.
+                    For California residents: We do not sell your personal information. You may request 
+                    deletion of your data at any time through the app settings.
                 </p>
             </div>
         </div>
