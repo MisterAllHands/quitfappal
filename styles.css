@@ -2415,13 +2415,3 @@ textarea:focus-visible {
         display: none !important;
     }
 }
-
-
-/* Added: CTA subtext for free trial messaging */
-.cta-subtext {
-    display: block;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 12px;
-    font-weight: 500;
-}
