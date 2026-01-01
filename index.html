@@ -4,106 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quit Fap Pal - Your Recovery Companion</title>
-    <meta name="description" content="Break free from addiction with your friendly recovery companion. Track streaks, build shields, and reclaim your life with science-backed tools.">
-    <meta name="keywords" content="porn addiction recovery, nofap app, addiction recovery, streak tracker, mental health app">
-    <meta name="theme-color" content="#8B5CF6">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="author" content="Quit Fap Pal">
+    <meta name="description" content="Break free from porn addiction with Quit Fap Pal. Track your progress, protect your streaks, and reclaim your life with science-backed tools designed to help you succeed.">
+    <meta name="keywords" content="quit porn, porn addiction, nofap app, recovery app, streak tracker, addiction recovery">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Social -->
     <meta property="og:title" content="Quit Fap Pal - Your Recovery Companion">
-    <meta property="og:description" content="Break free from addiction with your friendly recovery companion. Track streaks, protect your progress, and reclaim your life.">
-    <meta property="og:image" content="https://quitfappal.com/assets/og-image.png">
-    <meta property="og:url" content="https://quitfappal.com">
+    <meta property="og:description" content="Break free from addiction. Track your progress, protect your streaks, and reclaim your life.">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Quit Fap Pal">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Quit Fap Pal - Your Recovery Companion">
-    <meta name="twitter:description" content="Break free from addiction with your friendly recovery companion.">
-    <meta name="twitter:image" content="https://quitfappal.com/assets/og-image.png">
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Quit Fap Pal",
-        "description": "Break free from addiction with your friendly recovery companion. Track streaks, build shields, and reclaim your life with science-backed tools.",
-        "applicationCategory": "HealthApplication",
-        "operatingSystem": "iOS",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "150"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Quit Fap Pal"
-        }
-    }
-    </script>
+    <meta property="og:url" content="https://quitfappal.com">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-    
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="assets/mascot-superhero.png" as="image">
-    <link rel="preload" href="assets/app-demo.mp4" as="video" type="video/mp4">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <lottie-player src="assets/loading-animation.json" background="transparent" speed="1" class="loading-mascot" loop autoplay></lottie-player>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </button>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
-                <img src="assets/mascot-face.png" loading="lazy" alt="Pal" class="nav-mascot">
+                <img src="assets/mascot-face.png" alt="Pal" class="nav-logo-img">
                 <span>Quit Fap Pal</span>
             </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pro</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#pricing" class="nav-link">Pro</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
+            
             <a href="#download" class="nav-cta">Download Now</a>
-            <button class="nav-toggle" aria-label="Toggle navigation menu" id="navToggle" aria-label="Toggle menu">
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -113,88 +53,82 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-bg">
-            <div class="hero-blob blob-1"></div>
-            <div class="hero-blob blob-2"></div>
-            <div class="hero-blob blob-3"></div>
-        </div>
-        <div class="hero-container">
+        <div class="hero-bg"></div>
+        <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-icon">🔥</span>
                     <span>Your recovery journey starts here</span>
                 </div>
-                <h1 class="hero-title">
-                    Break Free.<br>
-                    <span class="gradient-text">Build Strength.</span>
-                </h1>
+                
+                <h1 class="hero-title">Break Free. Build Strength.</h1>
+                
                 <p class="hero-subtitle">
                     Meet your friendly recovery companion. Track your progress, 
                     protect your streaks, and reclaim your life with science-backed 
                     tools designed to help you succeed.
                 </p>
-                <div class="hero-cta">
-                    <a href="#download" class="btn btn-primary btn-large">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                
+                <div class="hero-cta-group">
+                    <a href="#download" class="btn btn-primary btn-lg">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                         </svg>
-                        Download on App Store
+                        Start My Free Trial
                     </a>
-                    <a href="#how-it-works" class="btn btn-secondary btn-large">
-                        See How It Works
-                    </a>
+                    <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-value">🛡️</span>
-                        <span class="stat-label">Shield System</span>
+                
+                <!-- Reassurance text below CTA -->
+                <p class="hero-reassurance">
+                    3 days free • No payment today • Cancel anytime
+                </p>
+                
+                <div class="hero-badges">
+                    <div class="trust-badge">
+                        <span class="trust-icon">🛡️</span>
+                        <span>Shield System</span>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <span class="stat-value">Science</span>
-                        <span class="stat-label">Backed Methods</span>
+                    <div class="trust-badge">
+                        <span class="trust-icon">🔬</span>
+                        <span class="trust-label">Science<br>Backed Methods</span>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <span class="stat-value">Private</span>
-                        <span class="stat-label">Your Data Stays</span>
+                    <div class="trust-badge">
+                        <span class="trust-icon">🔒</span>
+                        <span class="trust-label">Private<br>Your Data Stays</span>
                     </div>
                 </div>
             </div>
+            
             <div class="hero-visual">
-                <div class="hero-phone-video">
-                    <div class="hero-phone-notch"></div>
-                    <video class="hero-video" autoplay muted loop playsinline>
+                <div class="phone-mockup">
+                    <video autoplay muted loop playsinline class="phone-video">
                         <source src="assets/app-demo.mp4" type="video/mp4">
                     </video>
                 </div>
-                <img src="assets/mascot-superhero.png" alt="Pal the Recovery Buddy" class="hero-mascot-floating">
+                <img src="assets/mascot-superhero.png" alt="Pal the Recovery Buddy" class="hero-mascot">
             </div>
-        </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-            </svg>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Why Choose Us</span>
-                <h2 class="section-title">Everything You Need to <span class="gradient-text">Succeed</span></h2>
+            <div class="section-header">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">Everything You Need to Succeed</h2>
                 <p class="section-subtitle">Built on science, designed with care. Every feature helps you take one step closer to freedom.</p>
             </div>
             
             <div class="features-grid">
+                <!-- Feature 1: Streak Tracking -->
                 <div class="feature-card feature-large">
-                    <div class="feature-icon fire">
-                        <img src="assets/mascot-fire.png" loading="lazy" alt="Streak Tracking">
+                    <div class="feature-visual">
+                        <img src="assets/mascot-fire.png" alt="Streak Tracking" class="feature-img">
                     </div>
                     <div class="feature-content">
-                        <h3>Streak Tracking</h3>
-                        <p>Watch your progress grow day by day. Every streak milestone celebrated, every day counts towards your new life.</p>
+                        <h3 class="feature-title">Streak Tracking</h3>
+                        <p class="feature-desc">Watch your progress grow day by day. Every streak milestone celebrated, every day counts towards your new life.</p>
                         <ul class="feature-list">
                             <li>Daily streak counter with fire animations</li>
                             <li>Weekly and monthly progress views</li>
@@ -203,125 +137,115 @@
                     </div>
                 </div>
                 
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small shield">🛡️</div>
-                    <h3>Shield System</h3>
-                    <p>Earn shields by staying consistent. Use them to protect your streak on difficult days. A safety net when you need it most.</p>
+                <!-- Feature 2: Shield System -->
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Shield System</h3>
+                    <p class="feature-desc">Earn shields by staying consistent. Use them to protect your streak on difficult days. A safety net when you need it most.</p>
                 </div>
                 
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small brain">🧠</div>
-                    <h3>AI Recovery Coach</h3>
-                    <p>24/7 support from an AI trained in addiction recovery. Get personalized advice, coping strategies, and encouragement.</p>
+                <!-- Feature 3: AI Coach -->
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">AI Recovery Coach</h3>
+                    <p class="feature-desc">24/7 support from an AI trained in addiction recovery. Get personalized advice, coping strategies, and encouragement.</p>
                 </div>
                 
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small timer">⏱️</div>
-                    <h3>Urge Timer</h3>
-                    <p>Urges typically pass in 15-20 minutes. Our timer helps you ride the wave with breathing exercises and motivation.</p>
+                <!-- Feature 4: Urge Timer -->
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3 class="feature-title">Urge Timer</h3>
+                    <p class="feature-desc">Urges typically pass in 15-20 minutes. Our timer helps you ride the wave with breathing exercises and motivation.</p>
                 </div>
                 
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small book">📚</div>
-                    <h3>Learn Library</h3>
-                    <p>Curated videos from experts like Huberman Lab, explaining the science of recovery and practical strategies.</p>
+                <!-- Feature 5: Private Journal -->
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Private Journal</h3>
+                    <p class="feature-desc">Document your journey, track triggers, and reflect on your growth. Completely private, stored only on your device.</p>
                 </div>
                 
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small journal">📝</div>
-                    <h3>Private Journal</h3>
-                    <p>Document your journey, track triggers, and reflect on your growth. Completely private, stored only on your device.</p>
-                </div>
-                
-                <div class="feature-card reveal">
-                    <div class="feature-icon-small medal">🏆</div>
-                    <h3>Milestones & Badges</h3>
-                    <p>Unlock achievements as you progress. From your first day clean to legendary status. Every win deserves recognition.</p>
+                <!-- Feature 6: Milestones -->
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Milestones & Badges</h3>
+                    <p class="feature-desc">Unlock achievements as you progress. From your first day clean to legendary status. Every win deserves recognition.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Simple Process</span>
-                <h2 class="section-title">Your Journey to <span class="gradient-text">Freedom</span></h2>
+            <div class="section-header">
+                <span class="section-label">Simple Process</span>
+                <h2 class="section-title">Your Journey to Freedom</h2>
                 <p class="section-subtitle">Three simple steps to start your recovery journey</p>
             </div>
             
-            <div class="steps-container">
-                <!-- Step 1: Track Progress - Home Screenshot -->
-                <div class="step-row reveal">
+            <div class="steps">
+                <!-- Step 1 -->
+                <div class="step">
                     <div class="step-visual">
-                        <img src="assets/mockup-screenshot-home.png" loading="lazy" alt="Track Your Streak" class="step-phone-img">
-                        <img src="assets/mascot-streak.png" loading="lazy" alt="Streak Mascot" class="step-mascot">
+                        <img src="assets/mockup-screenshot-home.png" alt="Track Your Streak" class="step-phone">
+                        <img src="assets/mascot-streak.png" alt="Streak Mascot" class="step-mascot">
                     </div>
                     <div class="step-content">
                         <div class="step-number">1</div>
-                        <h3>Track Your Progress</h3>
-                        <p>Start your streak and watch it grow. Check in daily to log your mood, triggers, and wins. Your Pal celebrates every milestone with you.</p>
+                        <h3 class="step-title">Track Your Progress</h3>
+                        <p class="step-desc">Start your streak and watch it grow. Check in daily to log your mood, triggers, and wins. Your Pal celebrates every milestone with you.</p>
                     </div>
                 </div>
                 
-                <!-- Step 2: Use Tools -->
-                <div class="step-row step-row-reverse reveal">
+                <!-- Step 2 -->
+                <div class="step step-reverse">
                     <div class="step-visual">
-                        <img src="assets/mascot-tools.png" loading="lazy" alt="Tools Mascot" class="step-mascot">
-                        <img src="assets/mockup-screenshot-timer.png" loading="lazy" alt="Timer Screen" class="step-phone-img">
+                        <img src="assets/mascot-tools.png" alt="Tools Mascot" class="step-mascot-left">
+                        <img src="assets/mockup-screenshot-timer.png" alt="Timer Screen" class="step-phone">
                     </div>
                     <div class="step-content">
                         <div class="step-number">2</div>
-                        <h3>Use Tools When Struggling</h3>
-                        <p>Feeling an urge? Open the app. Breathing exercises, urge timer, AI coach - everything designed to help you through difficult moments.</p>
+                        <h3 class="step-title">Use Tools When Struggling</h3>
+                        <p class="step-desc">Feeling an urge? Open the app. Breathing exercises, urge timer, AI coach - everything designed to help you through difficult moments.</p>
                     </div>
                 </div>
                 
-                <!-- Step 3: Transform - Progress Video -->
-                <div class="step-row reveal">
+                <!-- Step 3 -->
+                <div class="step">
                     <div class="step-visual">
-                        <div class="phone-mockup-frame">
-                            <div class="phone-dynamic-island"></div>
-                            <video autoplay muted loop playsinline>
+                        <div class="step-video-container">
+                            <video autoplay muted loop playsinline class="step-video">
                                 <source src="assets/progress-demo.mp4" type="video/mp4">
                             </video>
                         </div>
-                        <img src="assets/mascot-progress.png" loading="lazy" alt="Progress Mascot" class="step-mascot">
+                        <img src="assets/mascot-progress.png" alt="Progress Mascot" class="step-mascot">
                     </div>
                     <div class="step-content">
                         <div class="step-number">3</div>
-                        <h3>Watch Yourself Transform</h3>
-                        <p>Review your progress with beautiful charts and insights. Understand your patterns, celebrate your growth, and keep building your new life.</p>
+                        <h3 class="step-title">Watch Yourself Transform</h3>
+                        <p class="step-desc">Review your progress with beautiful charts and insights. Understand your patterns, celebrate your growth, and keep building your new life.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mascot Story Section -->
-    <section class="story-section">
+    <!-- Creator Story Section -->
+    <section class="creator-story">
         <div class="container">
-            <div class="story-card reveal">
-                <div class="story-mascot">
-                    <img src="assets/mascot-worried.png" loading="lazy" alt="Pal understands">
-                </div>
-                <div class="story-content">
-                    <span class="section-tag">From The Creator</span>
-                    <h2>I Built This Because<br><span class="gradient-text">I Needed It Too</span></h2>
-                    <p class="story-text">
-                        I struggled with this addiction for years. The shame, the failed attempts, 
-                        the feeling that I was alone - I know it all too well. I searched for an 
-                        app that could actually help, but nothing felt right.
-                    </p>
-                    <p class="story-text">
-                        So I built one. I created the companion I wish I had during my darkest days. 
-                        <strong>Quit Fap Pal isn't just an app - it's a friend</strong> who understands 
-                        what you're going through and has your back, no matter what.
-                    </p>
-                    <p class="story-signature">
-                        You're not alone in this. Let's break free together. 💜
-                    </p>
+            <div class="story-content">
+                <img src="assets/mascot-worried.png" alt="Pal understands" class="story-mascot">
+                <div class="story-text">
+                    <span class="section-label">From The Creator</span>
+                    <h2 class="section-title">I Built This Because I Needed It Too</h2>
+                    <p>I struggled with this addiction for years. The shame, the failed attempts, 
+                    the feeling that I was alone - I know it all too well. I searched for an 
+                    app that could actually help, but nothing felt right.</p>
+                    <p>So I built one. I created the companion I wish I had during my darkest days. 
+                    <strong>Quit Fap Pal isn't just an app - it's a friend</strong> who understands 
+                    what you're going through and has your back, no matter what.</p>
+                    <p class="story-signature">You're not alone in this. Let's break free together. 💜</p>
                 </div>
             </div>
         </div>
@@ -330,30 +254,31 @@
     <!-- Privacy Section -->
     <section class="privacy-section">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Your Privacy Matters</span>
-                <h2 class="section-title">We Take Privacy <span class="gradient-text">Seriously</span></h2>
+            <div class="section-header">
+                <span class="section-label">Your Privacy Matters</span>
+                <h2 class="section-title">We Take Privacy Seriously</h2>
             </div>
             
             <div class="privacy-grid">
-                <div class="privacy-card reveal">
+                <div class="privacy-card">
                     <div class="privacy-icon">🔒</div>
                     <h3>Secure Sign-In</h3>
                     <p>Sign in securely with your Google or Apple account. We only use this for authentication - no access to your personal data.</p>
                 </div>
-                <div class="privacy-card reveal">
+                
+                <div class="privacy-card">
                     <div class="privacy-icon">📱</div>
                     <h3>Data Stays On Device</h3>
                     <p>Your journal, streaks, and progress are stored locally. Your recovery journey stays private.</p>
                 </div>
-                <div class="privacy-card privacy-card-mascot">
-                    <div class="privacy-mascot">
-                        <img src="assets/mascot-shield.png" loading="lazy" alt="Stealth Mode">
-                    </div>
+                
+                <div class="privacy-card privacy-card-featured">
+                    <img src="assets/mascot-shield.png" alt="Stealth Mode" class="privacy-mascot">
                     <h3>Discreet App Icon</h3>
                     <p>Enable stealth mode for a neutral app icon. Nobody will know what the app is for.</p>
                 </div>
-                <div class="privacy-card reveal">
+                
+                <div class="privacy-card">
                     <div class="privacy-icon">🔐</div>
                     <h3>PIN & Face ID Lock</h3>
                     <p>Add an extra layer of security. Your recovery journey is for your eyes only.</p>
@@ -363,16 +288,16 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section">
+    <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Success Stories</span>
-                <h2 class="section-title">People Like You <span class="gradient-text">Winning</span></h2>
+            <div class="section-header">
+                <span class="section-label">Success Stories</span>
+                <h2 class="section-title">People Like You Winning</h2>
                 <p class="section-subtitle">Real stories from our recovery community</p>
             </div>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"After years of struggling, this app finally helped me understand my triggers. The urge timer is a game-changer. 90 days clean and counting!"</p>
                     <div class="testimonial-author">
@@ -384,7 +309,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"The breathing exercises saved me so many times. When an urge hits, I open the app and within minutes I'm calm again. Best investment in myself."</p>
                     <div class="testimonial-author">
@@ -396,7 +321,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"I love how private it is. No one knows what this app is for just by looking at my phone. The daily check-ins keep me accountable without feeling judged."</p>
                     <div class="testimonial-author">
@@ -411,168 +336,103 @@
         </div>
     </section>
 
-    <!-- Pro Benefits Section -->
-    <section class="pro-section" id="pricing">
-        <div class="pro-container">
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <img src="assets/mascot-energy.png" alt="Recovery Pal" class="pricing-mascot">
+                <h2 class="pricing-title">unlock your full potential</h2>
+                <p class="pricing-subtitle">Get access to all features and accelerate your recovery</p>
+                <a href="#plans" class="btn btn-accent">TRY PRO</a>
+            </div>
             
-            <!-- Hero with Mascot -->
-            <div class="pro-hero">
-                <div class="pro-hero-mascot reveal">
-                    <img src="assets/mascot-energy.png" alt="Recovery Pal" class="mascot-hero">
-                    <div class="mascot-sparkles">
-                        <span class="sparkle"></span>
-                        <span class="sparkle"></span>
-                        <span class="sparkle"></span>
+            <div class="pricing-content" id="plans">
+                <div class="pricing-timeline">
+                    <h3>how pro works</h3>
+                    <p class="timeline-note">We'll remind you before any charges!</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-day">Today</span>
+                                <span class="timeline-text">Unlock full access to all Pro features</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-day">Day 2</span>
+                                <span class="timeline-text">Get reminded when your trial is about to end</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-day">Day 3</span>
+                                <span class="timeline-text">Your subscription begins, cancel anytime 24 hours before</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h2 class="pro-main-title reveal">unlock your<br><span class="gradient-text">full potential</span></h2>
-                <p class="pro-main-subtitle reveal">Get access to all features and accelerate your recovery</p>
-                <a href="#plans" class="pro-cta reveal">
-                    <span>TRY PRO</span>
-                </a>
-            </div>
-
-            <!-- How Pro Works Timeline -->
-            <div class="pro-timeline-section reveal">
-                <h3 class="timeline-heading">how pro works</h3>
-                <p class="timeline-subheading">We'll remind you before any charges!</p>
                 
-                <div class="timeline-vertical">
-                    <div class="timeline-item">
-                        <div class="timeline-icon timeline-icon-green">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div class="pricing-plans">
+                    <h3 class="plans-tagline">no commitment. cancel anytime.</h3>
+                    
+                    <!-- Pricing display -->
+                    <div class="pricing-display">
+                        <span class="pricing-trial">Try 3 days free</span>
+                        <span class="pricing-then">then</span>
+                        <span class="pricing-amount">$9.99<span class="pricing-period">/month</span></span>
+                        <span class="pricing-or">or $4.99/week</span>
+                    </div>
+                    
+                    <div class="plans-comparison">
+                        <div class="plan-column plan-free">
+                            <h4>Free</h4>
+                            <ul class="plan-features">
+                                <li class="feature-included">Basic streak tracking</li>
+                                <li class="feature-excluded">AI Recovery Coach</li>
+                                <li class="feature-excluded">Shield Protection System</li>
+                                <li class="feature-excluded">Unlimited Journal Entries</li>
+                                <li class="feature-excluded">Smart Pattern Detection</li>
+                                <li class="feature-excluded">Advanced Analytics</li>
+                            </ul>
                         </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-label">Today</span>
-                            <p class="timeline-text">Unlock full access to all Pro features</p>
+                        
+                        <div class="plan-column plan-pro">
+                            <h4>Pro</h4>
+                            <ul class="plan-features">
+                                <li class="feature-included">Basic streak tracking</li>
+                                <li class="feature-included">AI Recovery Coach</li>
+                                <li class="feature-included">Shield Protection System</li>
+                                <li class="feature-included">Unlimited Journal Entries</li>
+                                <li class="feature-included">Smart Pattern Detection</li>
+                                <li class="feature-included">Advanced Analytics</li>
+                            </ul>
                         </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-icon timeline-icon-purple">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-label">Day 5</span>
-                            <p class="timeline-text">Get reminded when your trial is about to end</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon timeline-icon-blue">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        </div>
-                        <div class="timeline-content">
-                            <span class="timeline-label">Day 7</span>
-                            <p class="timeline-text">Your subscription begins, cancel anytime 24 hours before</p>
-                        </div>
-                    </div>
+                    <a href="#download" class="btn btn-primary btn-xl">START MY FREE TRIAL</a>
+                    <p class="pricing-reassurance">No payment today • Cancel anytime • We'll remind you</p>
                 </div>
             </div>
-
-            <!-- No Commitment Header -->
-            <div class="no-commitment reveal">
-                <h3 class="no-commitment-title">no commitment.<br>cancel anytime.</h3>
-                <p class="no-commitment-sub">Try 1 week free</p>
-            </div>
-
-            <!-- Plan Cards - Stacked -->
-            <div id="plans" class="plans-stack">
-                
-                <!-- Free Plan -->
-                <div class="plan-card-duo plan-card-free reveal">
-                    <div class="plan-card-header plan-header-free">
-                        <span class="plan-title">Free</span>
-                    </div>
-                    <div class="plan-card-body plan-body-dark">
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Basic streak tracking</span>
-                        </div>
-                        <div class="plan-feature feature-disabled">
-                            <svg class="feature-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            <span>AI Recovery Coach</span>
-                        </div>
-                        <div class="plan-feature feature-disabled">
-                            <svg class="feature-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            <span>Shield Protection System</span>
-                        </div>
-                        <div class="plan-feature feature-disabled">
-                            <svg class="feature-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            <span>Unlimited Journal Entries</span>
-                        </div>
-                        <div class="plan-feature feature-disabled">
-                            <svg class="feature-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            <span>Smart Pattern Detection</span>
-                        </div>
-                        <div class="plan-feature feature-disabled">
-                            <svg class="feature-x" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            <span>Advanced Analytics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pro Plan -->
-                <div class="plan-card-duo plan-card-pro reveal">
-                    <div class="plan-badge-check">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    </div>
-                    <div class="plan-card-header plan-header-pro">
-                        <span class="plan-title">Pro</span>
-                    </div>
-                    <div class="plan-card-body plan-body-light">
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Basic streak tracking</span>
-                        </div>
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>AI Recovery Coach</span>
-                        </div>
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Shield Protection System</span>
-                        </div>
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Unlimited Journal Entries</span>
-                        </div>
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Smart Pattern Detection</span>
-                        </div>
-                        <div class="plan-feature">
-                            <svg class="feature-check" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Advanced Analytics</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- CTA Button -->
-            <div class="pro-final-cta reveal">
-                <a href="#download" class="btn-start-free">START MY 1 WEEK FREE</a>
-            </div>
-
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
+    <section class="faq" id="faq">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Got Questions?</span>
-                <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            <div class="section-header">
+                <span class="section-label">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
             </div>
             
-            <div class="faq-container">
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>How does the Shield system work?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
@@ -581,10 +441,10 @@
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>Will anyone know I'm using this app?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
@@ -593,34 +453,34 @@
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>Does this actually work?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Our approach is based on proven methods from cognitive behavioral therapy (CBT), mindfulness research, and habit science. Studies show that tracking progress, having coping tools readily available, and education about addiction significantly improve recovery outcomes. That said, the app is a tool to support your journey - your commitment and effort are what truly make the difference.</p>
+                        <p>Our approach is based on proven methods from cognitive behavioral therapy (CBT), mindfulness research, and habit science. Studies show that tracking progress, having coping tools readily available, and understanding your triggers significantly improve recovery outcomes. That said, the app is a tool to support your journey - your commitment and effort are what truly make the difference.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>What makes this different from other apps?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Most apps are either too clinical or too basic. Quit Fap Pal is designed to feel like a supportive friend, not a hospital. The Shield system gives you a safety net on hard days. The AI coach provides personalized support 24/7. And our Learn library features curated content from real experts, not generic advice. Plus, it's built by someone who actually struggled with this addiction.</p>
+                        <p>Most apps are either too clinical or too basic. Quit Fap Pal is designed to feel like a supportive friend, not a hospital. The Shield system gives you a safety net on hard days. The AI coach provides personalized support 24/7. Plus, it's built by someone who actually struggled with this addiction and understands what you're going through.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>What if I relapse?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
@@ -629,10 +489,10 @@
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>Is my data secure?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
@@ -641,10 +501,10 @@
                     </div>
                 </div>
                 
-                <div class="faq-item reveal">
-                    <button class="faq-question" aria-expanded="false">
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>Is this app available on Android?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M6 9l6 6 6-6"/>
                         </svg>
                     </button>
@@ -657,98 +517,79 @@
     </section>
 
     <!-- Download Section -->
-    <section class="download-section" id="download">
-        <div class="download-bg">
-            <div class="download-blob blob-1"></div>
-            <div class="download-blob blob-2"></div>
-        </div>
-        <div class="download-grid">
-            <div class="download-text">
-                <h2>Ready to Start Your <span class="gradient-text-light">Recovery?</span></h2>
-                <p>Download now and meet your new recovery companion. Private, secure, and waiting to help you succeed.</p>
-                <a href="#" class="btn btn-white btn-large">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <section class="download" id="download">
+        <div class="container">
+            <div class="download-content">
+                <h2 class="download-title">Ready to Start Your Recovery?</h2>
+                <p class="download-subtitle">Download now and meet your new recovery companion. Private, secure, and waiting to help you succeed.</p>
+                
+                <a href="#" class="btn btn-primary btn-xl download-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
-                    Download on App Store
+                    Start My Free Trial
                 </a>
-            </div>
-            <div class="download-mascot-wrapper">
-                <img src="assets/mascot-superhero.png" alt="Pal" class="download-mascot-large">
+                <p class="download-reassurance">3 days free • No payment today • Cancel anytime</p>
+                
+                <img src="assets/mascot-superhero.png" alt="Pal" class="download-mascot">
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
+    <section class="contact" id="contact">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Get In Touch</span>
-                <h2 class="section-title">We'd Love to <span class="gradient-text">Hear From You</span></h2>
+            <div class="section-header">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">We'd Love to Hear From You</h2>
                 <p class="section-subtitle">Questions, feedback, or just want to say hi? Drop us a message!</p>
             </div>
             
-            <div class="contact-layout">
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="ed3b9d16-6e92-4384-b449-377bf10ad0ac">
-                        <input type="hidden" name="subject" value="New Contact from QuitFapPal.com">
-                        <input type="hidden" name="from_name" value="QuitFapPal Website">
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" required placeholder="John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" name="email" required placeholder="john@example.com">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a topic...</option>
-                                <option value="feedback">App Feedback</option>
-                                <option value="bug">Report a Bug</option>
-                                <option value="feature">Feature Request</option>
-                                <option value="support">Support Question</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required placeholder="Tell us what's on your mind..." rows="6"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-large">
-                            <span>Send Message</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="contact-side">
-                    <div class="contact-card-large">
-                        <img src="assets/mascot-face.png" loading="lazy" alt="Pal" class="contact-mascot-large">
-                        <h3>Let's Chat!</h3>
-                        <p>We read every message and try to respond within 24 hours. Your feedback helps make the app better for everyone!</p>
+            <div class="contact-content">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     
-                    <div class="social-section">
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="feedback">App Feedback</option>
+                            <option value="bug">Report a Bug</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="support">Support Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <img src="assets/mascot-face.png" alt="Pal" class="contact-mascot">
+                    <h3>Let's Chat!</h3>
+                    <p>We read every message and try to respond within 24 hours. Your feedback helps make the app better for everyone!</p>
+                    
+                    <div class="social-links">
                         <h4>Follow Us</h4>
-                        <div class="social-icons-large">
-                            <a href="https://tiktok.com/@eppicpal" target="_blank" rel="noopener" class="social-link-large">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-                                </svg>
-                                <span>@eppicpal</span>
-                            </a>
-                        </div>
+                        <a href="https://tiktok.com/@eppicpal" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                            @eppicpal
+                        </a>
                     </div>
                 </div>
             </div>
@@ -758,74 +599,51 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-main">
+            <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
-                        <img src="assets/mascot-face.png" loading="lazy" alt="Pal">
+                        <img src="assets/mascot-face.png" alt="Pal" class="footer-logo-img">
                         <span>Quit Fap Pal</span>
                     </a>
-                    <p>Your friendly recovery companion. Break free, build strength, reclaim your life.</p>
+                    <p class="footer-tagline">Your friendly recovery companion. Break free, build strength, reclaim your life.</p>
                 </div>
+                
                 <div class="footer-links">
-                    <div class="footer-col">
+                    <div class="footer-column">
                         <h4>App</h4>
                         <a href="#features">Features</a>
                         <a href="#how-it-works">How It Works</a>
                         <a href="#pricing">Pro</a>
                         <a href="#download">Download</a>
                     </div>
-                    <div class="footer-col">
+                    
+                    <div class="footer-column">
                         <h4>Support</h4>
                         <a href="#faq">FAQ</a>
                         <a href="#contact">Contact</a>
                     </div>
-                    <div class="footer-col">
+                    
+                    <div class="footer-column">
                         <h4>Legal</h4>
                         <a href="privacy.html">Privacy Policy</a>
                         <a href="terms.html">Terms of Service</a>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>© 2025 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
+                <p>&copy; 2025 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Toast Notification -->
+    <!-- Success Toast -->
     <div class="toast" id="toast">
-        <div class="toast-icon">✓</div>
-        <div class="toast-message">Message sent successfully!</div>
+        <span class="toast-icon">✓</span>
+        <span class="toast-message">Message sent successfully!</span>
     </div>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </button>
-
-    <!-- Schema Markup for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Quit Fap Pal",
-        "description": "Break free from addiction with your friendly recovery companion. Track streaks, build shields, and reclaim your life with science-backed tools.",
-        "applicationCategory": "HealthApplication",
-        "operatingSystem": "iOS",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Quit Fap Pal"
-        }
-    }
-    </script>
-
-    <script src="script.js" defer></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
