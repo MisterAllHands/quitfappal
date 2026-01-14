@@ -196,7 +196,50 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = originalText;
         });
     }
-    
+
+    // ===================================
+    // WAITLIST FORMS
+    // ===================================
+    const waitlistForms = document.querySelectorAll('.waitlist-form');
+
+    waitlistForms.forEach(form => {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            const formData = new FormData(form);
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Joining...';
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Replace form with success message
+                    form.innerHTML = `
+                        <div class="success-state">
+                            <span class="checkmark">✓</span>
+                            <strong>You're on the list!</strong>
+                            <p>We'll email you when early access opens.</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (error) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                showToast('⚠ Something went wrong. Please try again.', 'error');
+            }
+        });
+    });
+
     // ===================================
     // CURSOR GLOW EFFECT (Desktop only)
     // ===================================

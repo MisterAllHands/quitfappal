@@ -4,17 +4,18 @@
 
 /* CSS Variables */
 :root {
-    /* Brand Colors - Purple theme matching mascot */
-    --primary: #9333EA;
-    --primary-dark: #7C3AED;
-    --primary-light: #A855F7;
-    --primary-glow: rgba(147, 51, 234, 0.3);
-    
+    /* Brand Colors - Purple theme matching app (#9B59B6) */
+    --primary: #9B59B6;
+    --primary-dark: #7B3FA0;
+    --primary-light: #B07CC6;
+    --primary-glow: rgba(155, 89, 182, 0.3);
+
     /* Accent Colors */
     --accent-orange: #FF9500;
     --accent-teal: #7EB8A2;
     --accent-red: #EF4444;
-    
+    --accent-success: #34C759;
+
     /* Neutrals */
     --white: #FFFFFF;
     --gray-50: #F9FAFB;
@@ -28,11 +29,11 @@
     --gray-800: #1F2937;
     --gray-900: #111827;
     --black: #000000;
-    
+
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #9333EA 0%, #7C3AED 50%, #6366F1 100%);
+    --gradient-primary: linear-gradient(135deg, #9B59B6 0%, #8E44AD 50%, #7B3FA0 100%);
     --gradient-hero: linear-gradient(180deg, #F5F3FF 0%, #EDE9FE 50%, #FFFFFF 100%);
-    --gradient-cta: linear-gradient(135deg, #9333EA 0%, #EC4899 100%);
+    --gradient-cta: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
     
     /* Typography */
     --font-display: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -61,7 +62,7 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-glow: 0 0 40px rgba(147, 51, 234, 0.3);
+    --shadow-glow: 0 0 40px rgba(155, 89, 182, 0.3);
     
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -1714,6 +1715,154 @@ ul, ol {
     .social-section {
         flex: 1;
         min-width: 200px;
+    }
+}
+
+/* ===================================
+   WAITLIST FORM
+   =================================== */
+.waitlist-section {
+    padding: var(--space-3xl) 0;
+    text-align: center;
+}
+
+.waitlist-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.waitlist-form .form-row {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.waitlist-form input[type="email"] {
+    flex: 1;
+    padding: var(--space-md) var(--space-lg);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--white);
+    transition: var(--transition-base);
+}
+
+.waitlist-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.waitlist-form input[type="email"]::placeholder {
+    color: var(--gray-400);
+}
+
+.waitlist-form button[type="submit"] {
+    padding: var(--space-md) var(--space-xl);
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-base);
+    white-space: nowrap;
+}
+
+.waitlist-form button[type="submit"]:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.waitlist-form .trust-line {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: var(--space-sm);
+}
+
+.waitlist-form .success-state {
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--gray-200);
+}
+
+.waitlist-form .success-state .checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent-success);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.waitlist-form .success-state strong {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--gray-900);
+    margin-bottom: var(--space-sm);
+}
+
+.waitlist-form .success-state p {
+    color: var(--gray-600);
+    margin: 0;
+}
+
+/* Waitlist intro text */
+.waitlist-intro {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-lg);
+}
+
+/* Waitlist in hero - inline style */
+.hero .waitlist-form {
+    max-width: 520px;
+}
+
+.hero .waitlist-form .form-row {
+    justify-content: center;
+}
+
+/* Waitlist in footer - compact style */
+.footer .waitlist-form {
+    max-width: 400px;
+}
+
+.footer .waitlist-form input[type="email"] {
+    background: var(--gray-800);
+    border-color: var(--gray-700);
+    color: var(--white);
+}
+
+.footer .waitlist-form input[type="email"]::placeholder {
+    color: var(--gray-500);
+}
+
+.footer .waitlist-form input[type="email"]:focus {
+    border-color: var(--primary);
+}
+
+.footer .waitlist-form .trust-line {
+    color: var(--gray-500);
+}
+
+/* Responsive waitlist form */
+@media (max-width: 600px) {
+    .waitlist-form .form-row {
+        flex-direction: column;
+    }
+
+    .waitlist-form button[type="submit"] {
+        width: 100%;
     }
 }
 
