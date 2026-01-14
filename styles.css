@@ -1177,93 +1177,83 @@ ul, ol {
 }
 
 /* ===================================
-   TESTIMONIALS SECTION
+   SCIENCE SECTION
    =================================== */
-.testimonials,
-.testimonials-section {
+.science-section {
     padding: var(--space-4xl) 0;
     background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
 }
 
-.testimonials-grid {
+.science-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
     margin-top: var(--space-2xl);
 }
 
-.testimonial-card {
+.science-card {
     background: var(--white);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-2xl);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--gray-100);
+    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.testimonial-card:hover {
+.science-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
-.testimonial-stars {
-    color: #FFB800;
-    font-size: 1.25rem;
+.science-number {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.science-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: var(--space-md);
 }
 
-.testimonial-text {
+.science-desc {
     font-size: 1rem;
-    color: var(--gray-700);
-    line-height: 1.8;
-    margin-bottom: var(--space-lg);
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+.science-sources {
+    margin-top: var(--space-2xl);
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+.science-sources p {
+    font-size: 0.875rem;
+    color: var(--gray-500);
     font-style: italic;
 }
 
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-}
-
-.author-avatar {
-    width: 48px;
-    height: 48px;
-    background: var(--gradient-primary);
-    color: var(--white);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.125rem;
-}
-
-.author-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.author-name {
-    font-weight: 700;
-    color: var(--gray-900);
-}
-
-.author-streak {
-    font-size: 0.875rem;
-    color: var(--accent-orange);
-    font-weight: 600;
-}
-
 @media (max-width: 1024px) {
-    .testimonials-grid {
+    .science-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .testimonials-grid {
+    .science-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -1333,8 +1323,112 @@ ul, ol {
 }
 
 /* ===================================
-   DOWNLOAD SECTION
+   FINAL CTA SECTION
    =================================== */
+.final-cta {
+    position: relative;
+    padding: var(--space-3xl) 0;
+    background: var(--gradient-primary);
+    overflow: hidden;
+}
+
+.final-cta-content {
+    position: relative;
+    text-align: center;
+    color: var(--white);
+}
+
+.final-cta-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--white);
+    margin-bottom: var(--space-md);
+}
+
+.final-cta-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+}
+
+.waitlist-form-large {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.waitlist-form-large .form-row {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.waitlist-form-large input[type="email"] {
+    flex: 1;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-full);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.waitlist-form-large input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.waitlist-form-large input[type="email"]:focus {
+    outline: none;
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.waitlist-form-large button[type="submit"] {
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-full);
+    background: var(--white);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-base);
+    white-space: nowrap;
+}
+
+.waitlist-form-large button[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.waitlist-form-large .trust-line {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    margin-top: var(--space-sm);
+}
+
+.final-cta-mascot {
+    position: absolute;
+    bottom: -20px;
+    right: 5%;
+    width: 180px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .waitlist-form-large .form-row {
+        flex-direction: column;
+    }
+
+    .waitlist-form-large button[type="submit"] {
+        width: 100%;
+    }
+
+    .final-cta-mascot {
+        display: none;
+    }
+}
+
+/* Legacy download section styles (kept for compatibility) */
 .download,
 .download-section {
     position: relative;
