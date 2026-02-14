@@ -119,16 +119,22 @@
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/mascot-face.png" alt="Pal" class="nav-mascot">
+                <img src="assets/mascot-face.png" alt="Pal" class="nav-logo-img">
                 <span>Quit Fap Pal</span>
             </a>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html#features">Features</a>
-                <a href="index.html#how-it-works">How It Works</a>
-                <a href="index.html#faq">FAQ</a>
-                <a href="index.html#contact">Contact</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#waitlist" class="nav-link nav-link-waitlist">Join Waitlist</a>
             </div>
-            <a href="index.html#download" class="nav-cta">Download Now</a>
+            <a href="index.html#waitlist" class="nav-cta">Join Waitlist</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -143,7 +149,7 @@
             
             <div class="legal-header">
                 <h1>Terms of Service</h1>
-                <p>Last updated: December 2024</p>
+                <p>Last updated: Feb 14, 2026</p>
             </div>
             
             <div class="legal-content">
@@ -153,6 +159,12 @@
                     you agree to be bound by these Terms of Service ("Terms"). If you do not agree to 
                     these Terms, please do not use the App.
                 </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>TestFlight beta:</strong> Quit Fap Pal may be distributed via TestFlight during beta (starting Feb 16, 2026). Features and pricing may change before public release.
+                    </p>
+                </div>
 
                 <div class="highlight-box">
                     <p>
@@ -188,6 +200,10 @@
                 <p>
                     Quit Fap Pal offers a <strong>3-day free trial</strong> for new users. After the trial period ends, 
                     a paid subscription is required to continue using the App.
+                </p>
+
+                <p>
+                    During a TestFlight beta, purchase and trial flows may be provided in a testing environment and may not result in charges. For public release, subscriptions are processed through the Apple App Store.
                 </p>
                 
                 <p><strong>Free Trial Terms:</strong></p>
@@ -270,9 +286,10 @@
                 <h2>User Content</h2>
                 <p>
                     Any content you create in the App (journal entries, check-ins, etc.) remains your 
-                    property. This content is stored locally on your device. When using the AI Coach 
-                    feature, relevant context from your journey data is processed to generate responses 
-                    (see our Privacy Policy for details).
+                    property. This content is stored on your device by default. If you sign in and enable
+                    cloud sync, the app may upload a snapshot to our cloud backend to support backup and
+                    cross-device sync. When using the AI Coach feature, relevant context from your journey
+                    data is processed to generate responses (see our Privacy Policy for details).
                 </p>
 
                 <h2>Intellectual Property</h2>
@@ -385,7 +402,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border: none; padding-top: 0;">
-                <p>© 2025 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
+                <p>© 2026 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
             </div>
         </div>
     </footer>

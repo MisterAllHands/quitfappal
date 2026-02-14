@@ -190,6 +190,7 @@ ul, ol {
     object-fit: cover;
 }
 
+/* Legacy class retained for backward compatibility */
 .nav-mascot {
     width: 40px;
     height: 40px;
@@ -226,6 +227,10 @@ ul, ol {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+.nav-link-waitlist {
+    display: none;
 }
 
 .nav-links {
@@ -2066,6 +2071,7 @@ ul, ol {
     width: 48px;
     height: 48px;
     border-radius: var(--radius-lg);
+    object-fit: cover;
 }
 
 .footer-logo span {
@@ -2299,6 +2305,22 @@ ul, ol {
     }
     
     .nav-cta {
+        display: none;
+    }
+
+    .nav-link-waitlist {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 18px;
+        border-radius: var(--radius-full);
+        background: var(--gradient-cta);
+        color: var(--white);
+        font-weight: 800;
+        margin-top: var(--space-md);
+    }
+
+    .nav-link-waitlist::after {
         display: none;
     }
     

@@ -40,13 +40,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
     
-    // ===================================
-    // NAVBAR
-    // ===================================
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    const backToTop = document.getElementById('backToTop');
+	    // ===================================
+	    // NAVBAR
+	    // ===================================
+	    const navbar = document.getElementById('navbar');
+	    const navToggle = document.getElementById('nav-toggle');
+	    const navMenu = document.getElementById('nav-menu');
+	    const backToTop = document.getElementById('backToTop');
     
     window.addEventListener('scroll', function() {
         const currentScroll = window.scrollY;
@@ -75,21 +75,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mobile menu toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-    }
-    
-    // Close mobile menu on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
+	    // Mobile menu toggle
+	    if (navToggle && navMenu) {
+	        navToggle.addEventListener('click', function() {
+	            navMenu.classList.toggle('active');
+	            navToggle.classList.toggle('active');
+	        });
+	    }
+	    
+	    // Close mobile menu on link click
+	    document.querySelectorAll('#nav-menu a').forEach(link => {
+	        link.addEventListener('click', function() {
+	            if (navMenu) navMenu.classList.remove('active');
+	            if (navToggle) navToggle.classList.remove('active');
+	        });
+	    });
     
     // ===================================
     // SMOOTH SCROLL
@@ -144,24 +144,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===================================
-    // CONTACT FORM WITH TOAST
-    // ===================================
-    const contactForm = document.getElementById('contactForm');
-    
-    // Create toast element
-    let toast = document.querySelector('.toast');
-    if (!toast) {
-        toast = document.createElement('div');
-        toast.className = 'toast';
-        document.body.appendChild(toast);
-    }
-    
-    function showToast(message, type = 'success') {
-        toast.textContent = message;
-        toast.className = 'toast ' + type + ' show';
-        setTimeout(() => toast.classList.remove('show'), 4000);
-    }
+	    // ===================================
+	    // CONTACT FORM WITH TOAST
+	    // ===================================
+	    const contactForm = document.getElementById('contact-form');
+	    
+	    // Create toast element
+	    let toast = document.getElementById('toast') || document.querySelector('.toast');
+	    if (!toast) {
+	        toast = document.createElement('div');
+	        toast.className = 'toast';
+	        toast.id = 'toast';
+	        toast.innerHTML = '<span class="toast-icon">✓</span><span class="toast-message"></span>';
+	        document.body.appendChild(toast);
+	    }
+
+	    const toastIcon = toast.querySelector('.toast-icon');
+	    const toastMessage = toast.querySelector('.toast-message');
+	    
+	    function showToast(message, type = 'success') {
+	        if (toastMessage) {
+	            toastMessage.textContent = message;
+	        } else {
+	            toast.textContent = message;
+	        }
+
+	        if (toastIcon) {
+	            toastIcon.textContent = type === 'success' ? '✓' : '!';
+	        }
+
+	        toast.classList.remove('success', 'error');
+	        toast.classList.add(type, 'show');
+	        setTimeout(() => toast.classList.remove('show'), 4000);
+	    }
     
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -170,27 +185,36 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Sending...</span>';
-            
-            const formData = new FormData(contactForm);
-            
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (response.ok) {
-                    showToast('✓ Message sent successfully!', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error('Failed');
-                }
-            } catch (error) {
-                showToast('⚠ Something went wrong. Please try again.', 'error');
-            }
+	            submitBtn.disabled = true;
+	            submitBtn.innerHTML = '<span>Sending...</span>';
+	            
+	            const formData = new FormData(contactForm);
+	            const topic = formData.get('topic');
+	            const message = formData.get('message');
+
+	            if (topic) {
+	                formData.set('subject', `Website Contact (${topic}) - QuitFapPal`);
+	                if (typeof message === 'string' && message.trim().length > 0) {
+	                    formData.set('message', `Topic: ${topic}\n\n${message}`);
+	                }
+	            }
+	            
+	            try {
+	                const response = await fetch('https://api.web3forms.com/submit', {
+	                    method: 'POST',
+	                    body: formData,
+	                    headers: { 'Accept': 'application/json' }
+	                });
+	                
+	                if (response.ok) {
+	                    showToast('Message sent successfully!', 'success');
+	                    contactForm.reset();
+	                } else {
+	                    throw new Error('Failed');
+	                }
+	            } catch (error) {
+	                showToast('Something went wrong. Please try again.', 'error');
+	            }
             
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
@@ -220,25 +244,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: { 'Accept': 'application/json' }
                 });
 
-                if (response.ok) {
-                    // Replace form with success message
-                    form.innerHTML = `
-                        <div class="success-state">
-                            <span class="checkmark">✓</span>
-                            <strong>You're on the list!</strong>
-                            <p>We'll email you when early access opens.</p>
-                        </div>
-                    `;
-                } else {
-                    throw new Error('Failed');
-                }
-            } catch (error) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-                showToast('⚠ Something went wrong. Please try again.', 'error');
-            }
-        });
-    });
+	                if (response.ok) {
+	                    // Replace form with success message
+	                    form.innerHTML = `
+	                        <div class="success-state">
+	                            <span class="checkmark">✓</span>
+	                            <strong>You're on the list!</strong>
+	                            <p>We'll email you when TestFlight invites open (Feb 16, 2026).</p>
+	                        </div>
+	                    `;
+	                } else {
+	                    throw new Error('Failed');
+	                }
+	            } catch (error) {
+	                submitBtn.disabled = false;
+	                submitBtn.innerHTML = originalText;
+	                showToast('Something went wrong. Please try again.', 'error');
+	            }
+	        });
+	    });
 
     // ===================================
     // CURSOR GLOW EFFECT (Desktop only)
@@ -297,10 +321,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     
     // ===================================
-    // PARALLAX EFFECTS
-    // ===================================
-    const heroMascot = document.querySelector('.hero-mascot-floating');
-    const heroPhone = document.querySelector('.hero-phone-video');
+	    // PARALLAX EFFECTS
+	    // ===================================
+	    const heroMascot = document.querySelector('.hero-mascot');
+	    const heroPhone = document.querySelector('.phone-mockup');
     
     window.addEventListener('scroll', function() {
         const scrolled = window.scrollY;
@@ -313,22 +337,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===================================
     // ESCAPE KEY & CLICK OUTSIDE
     // ===================================
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            if (navLinks) navLinks.classList.remove('active');
-            if (navToggle) navToggle.classList.remove('active');
-            faqItems.forEach(item => item.classList.remove('open'));
-        }
-    });
-    
-    document.addEventListener('click', function(e) {
-        if (navLinks && navToggle) {
-            if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
-        }
-    });
+	    document.addEventListener('keydown', function(e) {
+	        if (e.key === 'Escape') {
+	            if (navMenu) navMenu.classList.remove('active');
+	            if (navToggle) navToggle.classList.remove('active');
+	            faqItems.forEach(item => item.classList.remove('open'));
+	        }
+	    });
+	    
+	    document.addEventListener('click', function(e) {
+	        if (!navMenu || !navToggle) return;
+	        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+	            navMenu.classList.remove('active');
+	            navToggle.classList.remove('active');
+	        }
+	    });
     
     // ===================================
     // VIDEO AUTOPLAY FIX

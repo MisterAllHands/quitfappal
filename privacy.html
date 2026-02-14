@@ -107,16 +107,22 @@
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/mascot-face.png" alt="Pal" class="nav-mascot">
+                <img src="assets/mascot-face.png" alt="Pal" class="nav-logo-img">
                 <span>Quit Fap Pal</span>
             </a>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html#features">Features</a>
-                <a href="index.html#how-it-works">How It Works</a>
-                <a href="index.html#faq">FAQ</a>
-                <a href="index.html#contact">Contact</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#waitlist" class="nav-link nav-link-waitlist">Join Waitlist</a>
             </div>
-            <a href="index.html#download" class="nav-cta">Download Now</a>
+            <a href="index.html#waitlist" class="nav-cta">Join Waitlist</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -131,21 +137,19 @@
             
             <div class="legal-header">
                 <h1>Privacy Policy</h1>
-                <p>Last updated: December 2024</p>
+                <p>Last updated: Feb 14, 2026</p>
             </div>
             
-            <div class="legal-content">
-                <h2>Introduction</h2>
-                <p>
-                    Welcome to Quit Fap Pal ("we," "our," or "us"). We are committed to protecting your privacy 
-                    and ensuring you have a positive experience using our app. This Privacy Policy explains how 
-                    we handle information when you use the Quit Fap Pal mobile application.
-                </p>
-                <p>
-                    <strong>The short version:</strong> Your recovery journey data stays on your device. 
-                    We collect minimal data for authentication and subscriptions, and send contextual 
-                    information to our AI provider only when you use the AI Coach feature.
-                </p>
+	            <div class="legal-content">
+	                <h2>Introduction</h2>
+	                <p>
+	                    Welcome to Quit Fap Pal ("we," "our," or "us"). We are committed to protecting your privacy 
+	                    and ensuring you have a positive experience using our app. This Privacy Policy explains how 
+	                    we handle information when you use the Quit Fap Pal mobile application and when you interact with our website at quitfappal.com.
+	                </p>
+	                <p>
+	                    <strong>The short version:</strong> Your recovery data is stored on your device by default. If you sign in, the app can sync a snapshot to our cloud backend to support backup and cross-device sync (for signed-in users, sync may be enabled by default, and you can disable it anytime). We use Firebase Analytics and Crashlytics to improve reliability, and if you use the AI Coach we send your messages and selected context to Google Gemini. If you submit forms on our website, your submission is processed by Web3Forms.
+	                </p>
 
                 <h2>Information We Collect</h2>
                 
@@ -168,11 +172,11 @@
                 <p>
                     We use RevenueCat to manage subscriptions and in-app purchases. When you subscribe, RevenueCat collects:
                 </p>
-                <ul>
-                    <li>Purchase history and transaction records</li>
-                    <li>Subscription status and renewal information</li>
-                    <li>An anonymous identifier linked to your account</li>
-                </ul>
+	                <ul>
+	                    <li>Purchase history and transaction records</li>
+	                    <li>Subscription status and renewal information</li>
+	                    <li>An identifier linked to your account (for example, your app user ID)</li>
+	                </ul>
                 <p>
                     This data is necessary to provide you with premium features and manage your subscription. 
                     For more information, see <a href="https://www.revenuecat.com/privacy" style="color: var(--primary);">RevenueCat's Privacy Policy</a>.
@@ -188,10 +192,10 @@
                     <li>Any health data from HealthKit</li>
                 </ul>
 
-                <h2>Your Recovery Data</h2>
-                <p>
-                    Your recovery data is stored locally on your device and includes:
-                </p>
+	                <h2>Your Recovery Data</h2>
+	                <p>
+	                    Your recovery data is stored on your device and may include:
+	                </p>
                 <ul>
                     <li>Your streak count and history</li>
                     <li>Daily check-in records (mood, notes, coping strategies)</li>
@@ -203,10 +207,9 @@
                     <li>Conversation history with the AI Coach</li>
                     <li>App preferences and settings</li>
                 </ul>
-                <p>
-                    This data is stored securely on your device and associated with your account. 
-                    You can delete all your data at any time from the app settings.
-                </p>
+	                <p>
+	                    This data is stored on your device. If you sign in, cloud sync may be enabled by default and the app can upload a snapshot of this data to Firebase Firestore (and may use Apple iCloud/CloudKit as a fallback) to support backup and cross-device sync. You can disable cloud sync in Settings and you can export or delete your data at any time.
+	                </p>
 
                 <h2>AI Coach Feature</h2>
                 <p>
@@ -226,45 +229,55 @@
                 <p>
                     <strong>Important notes about AI data:</strong>
                 </p>
-                <ul>
-                    <li>No personally identifiable information (name, email) is sent to the AI</li>
-                    <li>This context helps the AI provide relevant, personalized support</li>
-                    <li>Messages are processed according to <a href="https://policies.google.com/privacy" style="color: var(--primary);">Google's Privacy Policy</a></li>
-                    <li>You can use the app fully without using the AI Coach feature</li>
-                </ul>
+	                <ul>
+	                    <li>We do not intentionally send your name or email address to the AI</li>
+	                    <li>You can control AI context (including a setting to disable sharing journal excerpts)</li>
+	                    <li>This context helps the AI provide relevant, personalized support</li>
+	                    <li>Messages are processed according to <a href="https://policies.google.com/privacy" style="color: var(--primary);">Google's Privacy Policy</a></li>
+	                    <li>You can use the app without using the AI Coach feature</li>
+	                </ul>
 
-                <h2>Analytics</h2>
-                <p>
-                    We may collect anonymous, aggregated analytics to improve the app experience. This includes:
-                </p>
-                <ul>
-                    <li>App crashes and error reports (no personal data)</li>
-                    <li>General usage statistics (which features are used most)</li>
-                    <li>Device type and iOS version (for compatibility)</li>
-                </ul>
-                <p>
-                    This data is completely anonymous and cannot be used to identify you or your recovery journey.
-                </p>
+	                <h2>Diagnostics and Analytics</h2>
+	                <p>
+	                    We use Firebase Analytics and Firebase Crashlytics to understand how the app is used and to fix bugs, crashes, and performance issues. This may include:
+	                </p>
+	                <ul>
+	                    <li>Crash reports and diagnostics</li>
+	                    <li>Device information (device model, iOS version, app version)</li>
+	                    <li>Usage events (for example: feature usage, check-in completion, tool usage). Some events may include self-reported signals you enter, such as mood ratings or selected trigger categories.</li>
+	                </ul>
+	                <p>
+	                    This data may be associated with your app instance and, if you sign in, with your Firebase user ID. We do not use this information for advertising or cross-app tracking, and we do not use the iOS advertising identifier (IDFA).
+	                </p>
 
-                <h2>Third-Party Services</h2>
+	                <h2>Website Waitlist and Contact Forms</h2>
+	                <p>
+	                    If you submit a waitlist signup or contact message on quitfappal.com, we collect the information you provide (such as your email address, name, and message). We use this information to send you TestFlight access, respond to you, and support our product operations.
+	                </p>
+	                <p>
+	                    Website forms are processed by Web3Forms and delivered to us. We do not sell your information.
+	                </p>
+
+	                <h2>Third-Party Services</h2>
                 <p>
                     Our app uses the following third-party services:
                 </p>
-                <ul>
-                    <li><strong>Firebase Authentication:</strong> For secure sign-in (<a href="https://firebase.google.com/support/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
-                    <li><strong>Google Gemini:</strong> For AI Coach responses (<a href="https://policies.google.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
-                    <li><strong>RevenueCat:</strong> For subscription management (<a href="https://www.revenuecat.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
-                </ul>
+	                <ul>
+	                    <li><strong>Firebase (Authentication, Firestore, Analytics, Crashlytics):</strong> Account sign-in, optional cloud sync, diagnostics, and analytics (<a href="https://firebase.google.com/support/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+	                    <li><strong>Google Gemini:</strong> AI Coach responses (<a href="https://policies.google.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+	                    <li><strong>RevenueCat:</strong> Subscription management (<a href="https://www.revenuecat.com/privacy" style="color: var(--primary);">Privacy Policy</a>)</li>
+	                    <li><strong>Web3Forms:</strong> Website waitlist/contact form processing (delivered to us)</li>
+	                    <li><strong>Apple iCloud/CloudKit (optional):</strong> May be used as a cloud sync fallback on supported devices</li>
+	                </ul>
                 <p>
                     The app may also contain links to external content (like educational videos on YouTube). 
                     When you access these external services, their own privacy policies apply.
                 </p>
 
-                <h2>Data Security</h2>
-                <p>
-                    Your recovery data is stored locally on your device. Its security depends on your device's security features. 
-                    We recommend:
-                </p>
+	                <h2>Data Security</h2>
+	                <p>
+	                    Your data is protected using your device's security features, and when data is transmitted (for example, cloud sync or AI Coach), it is sent over encrypted connections. We recommend:
+	                </p>
                 <ul>
                     <li>Using a strong device passcode</li>
                     <li>Enabling Face ID or Touch ID</li>
@@ -309,12 +322,13 @@
                 <p>
                     Depending on your location, you may have certain rights regarding your personal data, including:
                 </p>
-                <ul>
-                    <li>The right to access your data (available in Settings)</li>
-                    <li>The right to delete your data (available in Settings)</li>
-                    <li>The right to data portability (export feature available)</li>
-                    <li>The right to opt out of data collection (don't use AI Coach)</li>
-                </ul>
+	                <ul>
+	                    <li>The right to access your data (available in Settings)</li>
+	                    <li>The right to export your data (export feature available)</li>
+	                    <li>The right to delete your data (available in Settings)</li>
+	                    <li>The ability to disable cloud sync (in Settings)</li>
+	                    <li>The ability to control AI context (including disabling journal excerpts)</li>
+	                </ul>
                 <p>
                     For California residents: We do not sell your personal information. You may request 
                     deletion of your data at any time through the app settings.
@@ -327,7 +341,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border: none; padding-top: 0;">
-                <p>© 2025 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
+                <p>© 2026 Quit Fap Pal. All rights reserved. Made with 💜 for those who need it.</p>
             </div>
         </div>
     </footer>
