@@ -2328,13 +2328,62 @@ ul, ol {
         display: flex;
     }
     
-    .hero {
-        padding-top: 100px;
-    }
+	    .hero {
+	        min-height: auto;
+	        padding: 100px 0 var(--space-2xl);
+	    }
+
+	    .hero-badge {
+	        max-width: 340px;
+	        margin-left: auto;
+	        margin-right: auto;
+	        text-align: center;
+	        font-size: 0.8125rem;
+	        padding: 10px 12px;
+	    }
     
-    .hero-title {
-        font-size: 2.25rem;
-    }
+	    .hero-title {
+	        font-size: 2.25rem;
+	    }
+
+	    .hero-subtitle {
+	        font-size: 1.125rem;
+	        margin-bottom: var(--space-xl);
+	    }
+
+	    .waitlist-intro {
+	        font-size: 1rem;
+	        margin-bottom: var(--space-md);
+	    }
+
+	    .hero-badges {
+	        display: grid;
+	        grid-template-columns: repeat(3, minmax(0, 1fr));
+	        gap: 10px;
+	        justify-content: stretch;
+	        margin-top: var(--space-md);
+	    }
+
+	    .trust-badge {
+	        flex-direction: column;
+	        justify-content: center;
+	        text-align: center;
+	        gap: 6px;
+	        padding: 10px 8px;
+	        background: rgba(255, 255, 255, 0.85);
+	        border: 1px solid rgba(155, 89, 182, 0.14);
+	        border-radius: 16px;
+	        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.06);
+	    }
+
+	    .trust-icon {
+	        font-size: 1.25rem;
+	    }
+
+	    .trust-label {
+	        font-size: 0.7rem;
+	        line-height: 1.2;
+	    }
     
     .hero-cta,
     .hero-cta-group {
@@ -2355,12 +2404,13 @@ ul, ol {
         display: none;
     }
     
-    .phone-mockup,
-    .hero-phone-video {
-        width: 220px;
-        border-radius: 35px;
-        padding: 8px;
-    }
+	    .phone-mockup,
+	    .hero-phone-video {
+	        width: 220px;
+	        border-radius: 35px;
+	        padding: 8px;
+	        animation: none;
+	    }
     
     .hero-phone-notch {
         width: 70px;
@@ -2373,12 +2423,13 @@ ul, ol {
         border-radius: 28px;
     }
     
-    .hero-mascot,
-    .hero-mascot-floating {
-        width: 140px;
-        right: -40px;
-        bottom: -20px;
-    }
+	    .hero-mascot,
+	    .hero-mascot-floating {
+	        width: 120px;
+	        right: -10px;
+	        bottom: -10px;
+	        animation: none;
+	    }
     
     .features-grid {
         grid-template-columns: 1fr;
