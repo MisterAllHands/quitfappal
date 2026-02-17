@@ -1,5 +1,5 @@
 /* ===================================
-   QUIT FAP PAL - Website Interactions
+   QUITPAL - Website Interactions
    =================================== */
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
@@ -151,7 +151,7 @@ function setupContactForm(toast) {
         const message = formData.get('message');
 
         if (topic) {
-            formData.set('subject', `Website Contact (${topic}) - QuitFapPal`);
+            formData.set('subject', `Website Contact (${topic}) - QuitPal`);
             if (typeof message === 'string' && message.trim().length > 0) {
                 formData.set('message', `Topic: ${topic}\n\n${message}`);
             }

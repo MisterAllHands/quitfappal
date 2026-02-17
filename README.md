@@ -1,6 +1,6 @@
-# Quit Fap Pal Website
+# QuitPal Website
 
-Official landing page for the Quit Fap Pal iOS app.
+Official landing page for the QuitPal iOS app.
 
 ## 📁 Project Structure
 
@@ -27,4 +27,4 @@ quitfappal-website/
 └── README.md
 ```
 
-Made with 💜 for Quit Fap Pal
+Made with 💜 for QuitPal
