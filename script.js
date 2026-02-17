@@ -159,7 +159,7 @@ function setupContactForm(toast) {
 
         try {
             await submitWeb3Form(formData);
-            showToast(toast, 'Message sent successfully!', 'success');
+            showToast(toast, 'Message sent. We will get back to you soon.', 'success');
             contactForm.reset();
         } catch (error) {
             showToast(toast, 'Something went wrong. Please try again.', 'error');
@@ -185,15 +185,15 @@ function setupWaitlistForms(toast) {
             const formData = new FormData(form);
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Joining...';
+            submitBtn.innerHTML = 'Saving...';
 
             try {
                 await submitWeb3Form(formData);
                 form.innerHTML = `
                     <div class="success-state">
                         <span class="checkmark">✓</span>
-                        <strong>You're on the list!</strong>
-                        <p>We'll email you when TestFlight invites open (Feb 20, 2026).</p>
+                        <strong>You're in!</strong>
+                        <p>You're on the early-access list. We'll email you when TestFlight opens on Feb 20, 2026.</p>
                     </div>
                 `;
             } catch (error) {
