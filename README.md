@@ -1,6 +1,6 @@
-# QuitPal Website
+# QuitBruv Website
 
-Official landing page for the QuitPal iOS app.
+Official landing page for the QuitBruv iOS app.
 
 ## 📁 Project Structure
 
@@ -27,4 +27,4 @@ quitfappal-website/
 └── README.md
 ```
 
-Made with 💜 for QuitPal
+Made with 💜 for QuitBruv
