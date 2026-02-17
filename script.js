@@ -193,7 +193,7 @@ function setupWaitlistForms(toast) {
                     <div class="success-state">
                         <span class="checkmark">✓</span>
                         <strong>You're on the list!</strong>
-                        <p>We'll email you when TestFlight invites open (Feb 16, 2026).</p>
+                        <p>We'll email you when TestFlight invites open (Feb 20, 2026).</p>
                     </div>
                 `;
             } catch (error) {
