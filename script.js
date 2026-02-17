@@ -1,236 +1,186 @@
 /* ===================================
-   QUIT FAP PAL - Professional JavaScript
+   QUIT FAP PAL - Website Interactions
    =================================== */
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ===================================
-    // LOADING SCREEN
-    // ===================================
-    const loadingScreen = document.getElementById('loadingScreen');
-    
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            if (loadingScreen) loadingScreen.classList.add('hidden');
-            document.body.classList.add('loaded');
-        }, 1800);
-    });
-    
-    // Fallback: hide loading screen after 3 seconds max
-    setTimeout(() => {
-        if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
-            loadingScreen.classList.add('hidden');
-            document.body.classList.add('loaded');
-        }
-    }, 3000);
-    
-    // ===================================
-    // SCROLL PROGRESS BAR
-    // ===================================
-    const scrollProgress = document.getElementById('scrollProgress');
-    
-    function updateScrollProgress() {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        if (scrollProgress) {
-            scrollProgress.style.width = scrollPercent + '%';
-        }
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
+function createToast() {
+    let toast = document.getElementById('toast') || document.querySelector('.toast');
+
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.id = 'toast';
+        toast.innerHTML = '<span class="toast-icon">✓</span><span class="toast-message"></span>';
+        document.body.appendChild(toast);
     }
-    
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    
-	    // ===================================
-	    // NAVBAR
-	    // ===================================
-	    const navbar = document.getElementById('navbar');
-	    const navToggle = document.getElementById('nav-toggle');
-	    const navMenu = document.getElementById('nav-menu');
-	    const backToTop = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.scrollY;
-        
-        // Add scrolled class for background
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Back to top button visibility
-        if (backToTop) {
-            if (currentScroll > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+
+    return toast;
+}
+
+function showToast(toast, message, type = 'success') {
+    const toastIcon = toast.querySelector('.toast-icon');
+    const toastMessage = toast.querySelector('.toast-message');
+
+    if (toastMessage) {
+        toastMessage.textContent = message;
+    } else {
+        toast.textContent = message;
+    }
+
+    if (toastIcon) {
+        toastIcon.textContent = type === 'success' ? '✓' : '!';
+    }
+
+    toast.classList.remove('success', 'error', 'show');
+    toast.classList.add(type, 'show');
+
+    window.setTimeout(() => {
+        toast.classList.remove('show');
+    }, 4000);
+}
+
+function setupNavbar() {
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    const closeMenu = () => {
+        if (navMenu) navMenu.classList.remove('active');
+        if (navToggle) navToggle.classList.remove('active');
+    };
+
+    if (navbar) {
+        const updateNavbar = () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        };
+
+        updateNavbar();
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+    }
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        navMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                closeMenu();
             }
-        }
-    }, { passive: true });
-    
-    // Back to top click handler
-    if (backToTop) {
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-    
-	    // Mobile menu toggle
-	    if (navToggle && navMenu) {
-	        navToggle.addEventListener('click', function() {
-	            navMenu.classList.toggle('active');
-	            navToggle.classList.toggle('active');
-	        });
-	    }
-	    
-	    // Close mobile menu on link click
-	    document.querySelectorAll('#nav-menu a').forEach(link => {
-	        link.addEventListener('click', function() {
-	            if (navMenu) navMenu.classList.remove('active');
-	            if (navToggle) navToggle.classList.remove('active');
-	        });
-	    });
-    
-    // ===================================
-    // SMOOTH SCROLL
-    // ===================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenu();
+        }
+    });
+}
+
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+            const targetId = anchor.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+
             const target = document.querySelector(targetId);
-            if (target) {
-                const offsetTop = target.offsetTop - 80;
-                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-            }
+            if (!target) return;
+
+            event.preventDefault();
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         });
     });
-    
-    // ===================================
-    // SCROLL REVEAL ANIMATIONS
-    // ===================================
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    revealElements.forEach(el => revealObserver.observe(el));
-    
-    // ===================================
-    // FAQ ACCORDION
-    // ===================================
+}
+
+function setupFaq() {
     const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
+    if (faqItems.length === 0) return;
+
+    faqItems.forEach((item) => {
         const question = item.querySelector('.faq-question');
-        if (question) {
-            question.addEventListener('click', function() {
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('open');
-                });
-                item.classList.toggle('open');
+        if (!question) return;
+
+        question.addEventListener('click', () => {
+            faqItems.forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                }
             });
-        }
+            item.classList.toggle('open');
+        });
     });
-    
-	    // ===================================
-	    // CONTACT FORM WITH TOAST
-	    // ===================================
-	    const contactForm = document.getElementById('contact-form');
-	    
-	    // Create toast element
-	    let toast = document.getElementById('toast') || document.querySelector('.toast');
-	    if (!toast) {
-	        toast = document.createElement('div');
-	        toast.className = 'toast';
-	        toast.id = 'toast';
-	        toast.innerHTML = '<span class="toast-icon">✓</span><span class="toast-message"></span>';
-	        document.body.appendChild(toast);
-	    }
+}
 
-	    const toastIcon = toast.querySelector('.toast-icon');
-	    const toastMessage = toast.querySelector('.toast-message');
-	    
-	    function showToast(message, type = 'success') {
-	        if (toastMessage) {
-	            toastMessage.textContent = message;
-	        } else {
-	            toast.textContent = message;
-	        }
+async function submitWeb3Form(formData) {
+    const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+    });
 
-	        if (toastIcon) {
-	            toastIcon.textContent = type === 'success' ? '✓' : '!';
-	        }
+    if (!response.ok) {
+        throw new Error('Form submission failed');
+    }
 
-	        toast.classList.remove('success', 'error');
-	        toast.classList.add(type, 'show');
-	        setTimeout(() => toast.classList.remove('show'), 4000);
-	    }
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-	            submitBtn.disabled = true;
-	            submitBtn.innerHTML = '<span>Sending...</span>';
-	            
-	            const formData = new FormData(contactForm);
-	            const topic = formData.get('topic');
-	            const message = formData.get('message');
+    return response;
+}
 
-	            if (topic) {
-	                formData.set('subject', `Website Contact (${topic}) - QuitFapPal`);
-	                if (typeof message === 'string' && message.trim().length > 0) {
-	                    formData.set('message', `Topic: ${topic}\n\n${message}`);
-	                }
-	            }
-	            
-	            try {
-	                const response = await fetch('https://api.web3forms.com/submit', {
-	                    method: 'POST',
-	                    body: formData,
-	                    headers: { 'Accept': 'application/json' }
-	                });
-	                
-	                if (response.ok) {
-	                    showToast('Message sent successfully!', 'success');
-	                    contactForm.reset();
-	                } else {
-	                    throw new Error('Failed');
-	                }
-	            } catch (error) {
-	                showToast('Something went wrong. Please try again.', 'error');
-	            }
-            
+function setupContactForm(toast) {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+
+        const formData = new FormData(contactForm);
+        const topic = formData.get('topic');
+        const message = formData.get('message');
+
+        if (topic) {
+            formData.set('subject', `Website Contact (${topic}) - QuitFapPal`);
+            if (typeof message === 'string' && message.trim().length > 0) {
+                formData.set('message', `Topic: ${topic}\n\n${message}`);
+            }
+        }
+
+        try {
+            await submitWeb3Form(formData);
+            showToast(toast, 'Message sent successfully!', 'success');
+            contactForm.reset();
+        } catch (error) {
+            showToast(toast, 'Something went wrong. Please try again.', 'error');
+        } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
-        });
-    }
+        }
+    });
+}
 
-    // ===================================
-    // WAITLIST FORMS
-    // ===================================
+function setupWaitlistForms(toast) {
     const waitlistForms = document.querySelectorAll('.waitlist-form');
+    if (waitlistForms.length === 0) return;
 
-    waitlistForms.forEach(form => {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+    waitlistForms.forEach((form) => {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
             const submitBtn = form.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
+
             const originalText = submitBtn.innerHTML;
             const formData = new FormData(form);
 
@@ -238,152 +188,98 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = 'Joining...';
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-	                if (response.ok) {
-	                    // Replace form with success message
-	                    form.innerHTML = `
-	                        <div class="success-state">
-	                            <span class="checkmark">✓</span>
-	                            <strong>You're on the list!</strong>
-	                            <p>We'll email you when TestFlight invites open (Feb 16, 2026).</p>
-	                        </div>
-	                    `;
-	                } else {
-	                    throw new Error('Failed');
-	                }
-	            } catch (error) {
-	                submitBtn.disabled = false;
-	                submitBtn.innerHTML = originalText;
-	                showToast('Something went wrong. Please try again.', 'error');
-	            }
-	        });
-	    });
-
-    // ===================================
-    // CURSOR GLOW EFFECT (Desktop only)
-    // ===================================
-    if (window.innerWidth > 1024) {
-        const cursorGlow = document.createElement('div');
-        cursorGlow.className = 'cursor-glow';
-        document.body.appendChild(cursorGlow);
-        
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorGlow.classList.add('active');
-        });
-        
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            cursorGlow.style.left = cursorX + 'px';
-            cursorGlow.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-        
-        const interactiveElements = document.querySelectorAll('a, button, .feature-card, .testimonial-card, .privacy-card, .faq-question');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorGlow.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorGlow.classList.remove('hover'));
-        });
-        
-        document.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
-    }
-    
-    // ===================================
-    // BUTTON RIPPLE EFFECT
-    // ===================================
-    document.querySelectorAll('.btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            const rect = button.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const ripple = document.createElement('span');
-            ripple.style.cssText = 'position:absolute;background:rgba(255,255,255,0.4);border-radius:50%;pointer-events:none;width:100px;height:100px;left:' + (x-50) + 'px;top:' + (y-50) + 'px;transform:scale(0);animation:ripple 0.6s ease-out;';
-            button.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
+                await submitWeb3Form(formData);
+                form.innerHTML = `
+                    <div class="success-state">
+                        <span class="checkmark">✓</span>
+                        <strong>You're on the list!</strong>
+                        <p>We'll email you when TestFlight invites open (Feb 16, 2026).</p>
+                    </div>
+                `;
+            } catch (error) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                showToast(toast, 'Something went wrong. Please try again.', 'error');
+            }
         });
     });
-    
-    // Add ripple keyframes
-    const style = document.createElement('style');
-    style.textContent = '@keyframes ripple{to{transform:scale(4);opacity:0}}';
-    document.head.appendChild(style);
-    
-    // ===================================
-	    // PARALLAX EFFECTS
-	    // ===================================
-	    const heroMascot = document.querySelector('.hero-mascot');
-	    const heroPhone = document.querySelector('.phone-mockup');
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.scrollY;
-        if (scrolled < 800) {
-            if (heroMascot) heroMascot.style.transform = 'translateY(' + (scrolled * 0.15) + 'px) rotate(' + (-2 + scrolled * 0.01) + 'deg)';
-            if (heroPhone) heroPhone.style.transform = 'translateY(' + (scrolled * 0.08) + 'px)';
+}
+
+function setupLazyVideos() {
+    const lazyVideos = document.querySelectorAll('video.js-lazy-video');
+    if (lazyVideos.length === 0) return;
+
+    const loadVideoSource = (video) => {
+        if (video.dataset.loaded === 'true') return;
+
+        const source = video.querySelector('source[data-src]');
+        if (source) {
+            source.src = source.dataset.src;
+            source.removeAttribute('data-src');
         }
-    }, { passive: true });
-    
-    // ===================================
-    // ESCAPE KEY & CLICK OUTSIDE
-    // ===================================
-	    document.addEventListener('keydown', function(e) {
-	        if (e.key === 'Escape') {
-	            if (navMenu) navMenu.classList.remove('active');
-	            if (navToggle) navToggle.classList.remove('active');
-	            faqItems.forEach(item => item.classList.remove('open'));
-	        }
-	    });
-	    
-	    document.addEventListener('click', function(e) {
-	        if (!navMenu || !navToggle) return;
-	        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-	            navMenu.classList.remove('active');
-	            navToggle.classList.remove('active');
-	        }
-	    });
-    
-    // ===================================
-    // VIDEO AUTOPLAY FIX
-    // ===================================
-    document.querySelectorAll('video[autoplay]').forEach(video => {
+
+        video.load();
+        video.dataset.loaded = 'true';
+    };
+
+    const playVideo = (video) => {
         video.play().catch(() => {
-            const playOnScroll = () => {
-                video.play();
-                window.removeEventListener('scroll', playOnScroll);
-            };
-            window.addEventListener('scroll', playOnScroll, { once: true, passive: true });
+            // Autoplay can fail until user interacts; this is non-critical.
+        });
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    loadVideoSource(video);
+                    playVideo(video);
+                    currentObserver.unobserve(video);
+                }
+            });
+        }, {
+            rootMargin: '300px 0px',
+            threshold: 0.15
+        });
+
+        lazyVideos.forEach((video) => observer.observe(video));
+    } else {
+        lazyVideos.forEach((video) => {
+            loadVideoSource(video);
+            playVideo(video);
+        });
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) return;
+
+        lazyVideos.forEach((video) => {
+            if (!video.paused) {
+                video.pause();
+            }
         });
     });
-    
-    // ===================================
-    // TESTIMONIALS AUTO-HIGHLIGHT
-    // ===================================
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    let currentTestimonial = 0;
-    
-    if (testimonialCards.length > 0) {
-        setInterval(() => {
-            testimonialCards.forEach(card => card.style.transform = 'translateY(0)');
-            testimonialCards[currentTestimonial].style.transform = 'translateY(-5px)';
-            currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-        }, 4000);
-    }
-    
-    // ===================================
-    // CONSOLE EASTER EGG
-    // ===================================
-    console.log('%c🔥 Quit Fap Pal', 'font-size:24px;font-weight:bold;color:#9333EA');
-    console.log('%cBuilding strength, one day at a time.', 'font-size:14px;color:#666');
-    
+}
+
+function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {
+            // Ignore SW registration issues in unsupported/private contexts.
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavbar();
+    setupSmoothScroll();
+    setupFaq();
+
+    const toast = createToast();
+    setupContactForm(toast);
+    setupWaitlistForms(toast);
+    setupLazyVideos();
+    registerServiceWorker();
 });

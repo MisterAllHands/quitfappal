@@ -26,10 +26,21 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     
-    <!-- Fonts -->
+    <!-- Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap">
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+        media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap">
+    </noscript>
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -39,7 +50,15 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
-                <img src="assets/mascot-face.png" alt="Pal" class="nav-logo-img">
+                <img
+                    src="assets/optimized/mascot-face-220.png"
+                    srcset="assets/optimized/mascot-face-220.png 220w, assets/optimized/mascot-face-420.png 420w"
+                    sizes="40px"
+                    width="600"
+                    height="562"
+                    decoding="async"
+                    alt="Pal"
+                    class="nav-logo-img">
                 <span>Quit Fap Pal</span>
             </a>
             
@@ -114,11 +133,29 @@
 	            
 	            <div class="hero-visual">
 	                <div class="phone-mockup">
-	                    <video autoplay muted loop playsinline preload="metadata" poster="assets/app-demo-poster.jpg" class="phone-video">
-	                        <source src="assets/app-demo.mp4" type="video/mp4">
-	                    </video>
-	                </div>
-	                <img src="assets/mascot-superhero.png" alt="Pal the Recovery Buddy" class="hero-mascot">
+                    <video
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        poster="assets/optimized/app-demo-poster-720.jpg"
+                        width="420"
+                        height="910"
+                        class="phone-video js-lazy-video">
+                        <source data-src="assets/optimized/app-demo-optimized.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <img
+                    src="assets/optimized/mascot-superhero-420.png"
+                    srcset="assets/optimized/mascot-superhero-220.png 220w, assets/optimized/mascot-superhero-420.png 420w"
+                    sizes="(max-width: 768px) 120px, 210px"
+                    width="600"
+                    height="562"
+                    loading="eager"
+                    fetchpriority="low"
+                    decoding="async"
+                    alt="Pal the Recovery Buddy"
+                    class="hero-mascot">
 	            </div>
         </div>
     </section>
@@ -136,7 +173,16 @@
                 <!-- Feature 1: AI Coach (KILLER FEATURE) -->
 	                <div class="feature-card feature-large">
 	                    <div class="feature-visual">
-	                        <img src="assets/mascot-fire.png" alt="AI Coach" class="feature-img">
+                        <img
+                            src="assets/optimized/mascot-fire-420.png"
+                            srcset="assets/optimized/mascot-fire-220.png 220w, assets/optimized/mascot-fire-420.png 420w"
+                            sizes="(max-width: 768px) 206px, 350px"
+                            width="600"
+                            height="562"
+                            loading="lazy"
+                            decoding="async"
+                            alt="AI Coach"
+                            class="feature-img">
 	                    </div>
 	                    <div class="feature-content">
 	                        <h3 class="feature-title">AI Recovery Coach</h3>
@@ -230,9 +276,27 @@
                     <div class="step-visual">
                         <div class="iphone-frame">
                             <div class="iphone-notch"></div>
-                            <img src="assets/screenshot-home.png" alt="Recovery Progress - See your healing timeline" class="iphone-screen">
+                            <img
+                                src="assets/optimized/screenshot-home-560.png"
+                                srcset="assets/optimized/screenshot-home-280.png 280w, assets/optimized/screenshot-home-560.png 560w"
+                                sizes="(max-width: 768px) 160px, 280px"
+                                width="1206"
+                                height="2622"
+                                loading="lazy"
+                                decoding="async"
+                                alt="Recovery Progress - See your healing timeline"
+                                class="iphone-screen">
                         </div>
-                        <img src="assets/mascot-streak.png" alt="Streak Mascot" class="step-mascot">
+                        <img
+                            src="assets/optimized/mascot-streak-420.png"
+                            srcset="assets/optimized/mascot-streak-220.png 220w, assets/optimized/mascot-streak-420.png 420w"
+                            sizes="(max-width: 768px) 110px, 193px"
+                            width="600"
+                            height="562"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Streak Mascot"
+                            class="step-mascot">
                     </div>
                     <div class="step-content">
                         <div class="step-number">1</div>
@@ -244,10 +308,28 @@
                 <!-- Step 2 -->
                 <div class="step step-reverse">
                     <div class="step-visual">
-                        <img src="assets/mascot-tools.png" alt="Tools Mascot" class="step-mascot-left">
+                        <img
+                            src="assets/optimized/mascot-tools-420.png"
+                            srcset="assets/optimized/mascot-tools-220.png 220w, assets/optimized/mascot-tools-420.png 420w"
+                            sizes="(max-width: 768px) 110px, 193px"
+                            width="600"
+                            height="563"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Tools Mascot"
+                            class="step-mascot-left">
                         <div class="iphone-frame">
                             <div class="iphone-notch"></div>
-                            <img src="assets/screenshot-coach.png" alt="AI Coach - Get personalized support" class="iphone-screen">
+                            <img
+                                src="assets/optimized/screenshot-coach-560.png"
+                                srcset="assets/optimized/screenshot-coach-280.png 280w, assets/optimized/screenshot-coach-560.png 560w"
+                                sizes="(max-width: 768px) 160px, 280px"
+                                width="1206"
+                                height="2622"
+                                loading="lazy"
+                                decoding="async"
+                                alt="AI Coach - Get personalized support"
+                                class="iphone-screen">
                         </div>
                     </div>
                     <div class="step-content">
@@ -261,11 +343,28 @@
                 <div class="step">
                     <div class="step-visual">
                         <div class="step-video-container">
-                            <video autoplay muted loop playsinline class="step-video">
-                                <source src="assets/progress-demo.mp4" type="video/mp4">
+                            <video
+                                muted
+                                loop
+                                playsinline
+                                preload="none"
+                                width="320"
+                                height="694"
+                                class="step-video js-lazy-video"
+                                aria-label="Recovery progress demo">
+                                <source data-src="assets/optimized/progress-demo-optimized.mp4" type="video/mp4">
                             </video>
                         </div>
-                        <img src="assets/mascot-progress.png" alt="Progress Mascot" class="step-mascot">
+                        <img
+                            src="assets/optimized/mascot-progress-420.png"
+                            srcset="assets/optimized/mascot-progress-220.png 220w, assets/optimized/mascot-progress-420.png 420w"
+                            sizes="(max-width: 768px) 110px, 193px"
+                            width="600"
+                            height="562"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Progress Mascot"
+                            class="step-mascot">
                     </div>
                     <div class="step-content">
                         <div class="step-number">3</div>
@@ -281,7 +380,16 @@
     <section class="creator-story">
         <div class="container">
             <div class="story-content">
-                <img src="assets/mascot-worried.png" alt="Pal understands" class="story-mascot">
+                <img
+                    src="assets/optimized/mascot-worried-420.png"
+                    srcset="assets/optimized/mascot-worried-220.png 220w, assets/optimized/mascot-worried-420.png 420w"
+                    sizes="(max-width: 768px) 177px, 260px"
+                    width="600"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Pal understands"
+                    class="story-mascot">
                 <div class="story-text">
                     <span class="section-label">From The Creator</span>
                     <h2 class="section-title">I Built This Because I Needed It Too</h2>
@@ -319,7 +427,16 @@
 	                </div>
                 
                 <div class="privacy-card privacy-card-featured">
-                    <img src="assets/mascot-shield.png" alt="Privacy Protection" class="privacy-mascot">
+                    <img
+                        src="assets/optimized/mascot-shield-420.png"
+                        srcset="assets/optimized/mascot-shield-220.png 220w, assets/optimized/mascot-shield-420.png 420w"
+                        sizes="(max-width: 768px) 160px, 260px"
+                        width="600"
+                        height="562"
+                        loading="lazy"
+                        decoding="async"
+                        alt="Privacy Protection"
+                        class="privacy-mascot">
                     <h3>Privacy Blur Protection</h3>
                     <p>App content automatically blurs in the app switcher. Nobody can see your screen accidentally.</p>
                 </div>
@@ -483,7 +600,16 @@
 	                    <p class="trust-line">🔒 No spam. One email when invites open.</p>
 	                </form>
 
-                <img src="assets/mascot-superhero.png" alt="Pal" class="final-cta-mascot">
+                <img
+                    src="assets/optimized/mascot-superhero-420.png"
+                    srcset="assets/optimized/mascot-superhero-220.png 220w, assets/optimized/mascot-superhero-420.png 420w"
+                    sizes="(max-width: 768px) 120px, 220px"
+                    width="600"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Pal"
+                    class="final-cta-mascot">
             </div>
         </div>
     </section>
@@ -534,7 +660,16 @@
                 </form>
                 
 	                <div class="contact-info">
-	                    <img src="assets/mascot-face.png" alt="Pal" class="contact-mascot">
+	                    <img
+                            src="assets/optimized/mascot-face-420.png"
+                            srcset="assets/optimized/mascot-face-220.png 220w, assets/optimized/mascot-face-420.png 420w"
+                            sizes="(max-width: 768px) 120px, 210px"
+                            width="600"
+                            height="562"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Pal"
+                            class="contact-mascot">
 	                    <h3>Let's Chat!</h3>
 	                    <p>We read every message and do our best to reply quickly. Your feedback helps make the app better for everyone.</p>
                     
@@ -559,7 +694,16 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
-                        <img src="assets/mascot-face.png" alt="Pal" class="footer-logo-img">
+                        <img
+                            src="assets/optimized/mascot-face-220.png"
+                            srcset="assets/optimized/mascot-face-220.png 220w, assets/optimized/mascot-face-420.png 420w"
+                            sizes="40px"
+                            width="600"
+                            height="562"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Pal"
+                            class="footer-logo-img">
                         <span>Quit Fap Pal</span>
                     </a>
                     <p class="footer-tagline">Your friendly recovery companion. Break free, build strength, reclaim your life.</p>
@@ -600,6 +744,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
